@@ -1,1 +1,8 @@
-/target
+# 忽略 /target 下所有内容
+/target/**
+
+# 先保留 debug 目录（关键步骤！）
+!/target/debug/
+
+# 再保留目标文件
+!/target/debug/stationerium.dll

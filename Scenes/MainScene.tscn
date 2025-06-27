@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfilq7nwmqsu5"]
+[gd_scene load_steps=3 format=3 uid="uid://dfilq7nwmqsu5"]
 
 [ext_resource type="Script" uid="uid://f1gbvxkk48c4" path="res://Scenes/Scripts/Node2d.cs" id="1_hpc76"]
+[ext_resource type="Texture2D" uid="uid://bhdyop3a23w5" path="res://icon.svg" id="2_tr2i4"]
 
-[node name="MainScene" type="MainScene"]
+[node name="MainScene" type="MainScene" node_paths=PackedStringArray("camera2d")]
+camera2d = NodePath("Camera2D")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_hpc76")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_tr2i4")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,5 +1,5 @@
-mod player;
 mod main_scene;
+mod cstationery_character;
 
 use godot::prelude::*;
 
