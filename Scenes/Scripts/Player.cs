@@ -15,6 +15,8 @@ public partial class Player : Area2D
     [Export] public float BodyOffsetX = 30f;
     [Export] public TextureProgressBar HealthBar;
     [Export] public TextureProgressBar EnergyBar;
+    [Export] public float MinX = 100f;
+    [Export] public float MaxX = 1800f;
 
 
     public int currentHealth;
@@ -95,6 +97,12 @@ public partial class Player : Area2D
 
         Velocity.Y += (Velocity.Y > 0 ? GravityForce * FallMultiplier : GravityForce) * deltaF;
         Position += Velocity * deltaF;
+
+        // 限制 X 在边界内
+        Position = new Vector2(
+            Mathf.Clamp(Position.X, MinX, MaxX),
+            Position.Y
+        );
 
         if (Position.Y >= GroundY)
         {
