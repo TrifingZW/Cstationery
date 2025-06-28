@@ -1,15 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfilq7nwmqsu5"]
+[gd_scene load_steps=4 format=3 uid="uid://dfilq7nwmqsu5"]
 
 [ext_resource type="Script" uid="uid://f1gbvxkk48c4" path="res://Scenes/Scripts/Node2d.cs" id="1_hpc76"]
 [ext_resource type="Texture2D" uid="uid://bhdyop3a23w5" path="res://icon.svg" id="2_tr2i4"]
+[ext_resource type="Script" uid="uid://bxlrjont4ac3k" path="res://Scenes/Scripts/CstationeryCharacter.cs" id="3_nhkr4"]
 
-[node name="MainScene" type="MainScene" node_paths=PackedStringArray("camera2d")]
+[node name="MainScene" type="MainScene" node_paths=PackedStringArray("characters", "camera2d")]
+characters = [NodePath("CstationeryCharacter"), NodePath("CstationeryCharacter2"), NodePath("CstationeryCharacter3"), NodePath("CstationeryCharacter4")]
 camera2d = NodePath("Camera2D")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_hpc76")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CstationeryCharacter" type="CstationeryCharacter" parent="."]
+script = ExtResource("3_nhkr4")
+Direction = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CstationeryCharacter"]
 texture = ExtResource("2_tr2i4")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CstationeryCharacter2" type="CstationeryCharacter" parent="."]
+position = Vector2(-228, -127)
+script = ExtResource("3_nhkr4")
+Direction = Vector2(-1, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CstationeryCharacter2"]
+texture = ExtResource("2_tr2i4")
+
+[node name="CstationeryCharacter4" type="CstationeryCharacter" parent="."]
+position = Vector2(-2, -157)
+script = ExtResource("3_nhkr4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CstationeryCharacter4"]
+texture = ExtResource("2_tr2i4")
+
+[node name="CstationeryCharacter3" type="CstationeryCharacter" parent="."]
+position = Vector2(-47, -68)
+
+[node name="Sprite2D" type="Sprite2D" parent="CstationeryCharacter3"]
+texture = ExtResource("2_tr2i4")
