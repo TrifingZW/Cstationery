@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxdyuprj68j3u"]
+
+[ext_resource type="Texture2D" uid="uid://f2ufgl7bvbwe" path="res://testZiYuan/123.png" id="1_hrnqq"]
+
+[node name="One_Select the Character screen" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 53.0
+offset_top = 106.0
+offset_right = 179.0
+offset_bottom = 231.0
+
+[node name="123" type="Sprite2D" parent="Button"]
+position = Vector2(61, 62)
+scale = Vector2(0.1425, 0.1325)
+texture = ExtResource("1_hrnqq")

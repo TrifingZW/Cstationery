@@ -31,10 +31,11 @@ script = ExtResource("1_mxk1q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
-offset_left = 456.0
-offset_top = 55.0
-offset_right = 856.0
-offset_bottom = 602.0
+offset_left = 786.0
+offset_top = 159.0
+offset_right = 1306.0
+offset_bottom = 857.0
+scale = Vector2(1.12, 1.2)
 theme_override_constants/separation = 60
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -42,7 +43,7 @@ z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_q3kb3")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 130
 text = "手当其冲"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
@@ -69,7 +70,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_q3kb3")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
 text = "开始游戏"
 icon_alignment = 1
@@ -93,7 +94,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_q3kb3")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_q3kb3")
 text = "设置"
 icon_alignment = 1
@@ -117,7 +118,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_q3kb3")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_prwaj")
 text = "退出游戏"
 icon_alignment = 1
@@ -126,8 +127,8 @@ icon_alignment = 1
 self_modulate = Color(0.881937, 0.881937, 0.881937, 1)
 show_behind_parent = true
 top_level = true
-position = Vector2(579, 320)
-scale = Vector2(0.599479, 0.6)
+position = Vector2(963.25, 538)
+scale = Vector2(0.999739, 1.0037)
 texture = ExtResource("5_sbwks")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -136,10 +137,10 @@ volume_db = -22.486
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
-offset_left = 202.0
-offset_top = 37.0
-offset_right = 940.0
-offset_bottom = 596.0
+offset_left = 589.0
+offset_top = 284.0
+offset_right = 1327.0
+offset_bottom = 843.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
@@ -199,17 +200,18 @@ offset_bottom = 644.0
 self_modulate = Color(0.881937, 0.881937, 0.881937, 1)
 show_behind_parent = true
 top_level = true
-position = Vector2(579, 320)
-scale = Vector2(0.599479, 0.6)
+position = Vector2(958, 538)
+scale = Vector2(0.994922, 1.0037)
 texture = ExtResource("5_sbwks")
 
 [node name="Label2" type="Label" parent="Panel2"]
 z_index = 1
 layout_mode = 0
-offset_left = 489.0
-offset_top = 101.0
-offset_right = 839.0
-offset_bottom = 188.0
+offset_left = 916.0
+offset_top = 319.0
+offset_right = 1266.0
+offset_bottom = 406.0
+scale = Vector2(1.05765, 1.18067)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_q3kb3")
 theme_override_font_sizes/font_size = 50
@@ -218,10 +220,11 @@ text = "请选择游戏模式"
 [node name="back2" type="Button" parent="Panel2"]
 z_index = 1
 layout_mode = 2
-offset_left = 556.0
-offset_top = 235.0
-offset_right = 756.0
-offset_bottom = 284.0
+offset_left = 983.0
+offset_top = 453.0
+offset_right = 1183.0
+offset_bottom = 502.0
+scale = Vector2(1.05765, 1.18067)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -247,10 +250,11 @@ icon_alignment = 1
 [node name="back3" type="Button" parent="Panel2"]
 z_index = 1
 layout_mode = 2
-offset_left = 556.0
-offset_top = 344.0
-offset_right = 756.0
-offset_bottom = 393.0
+offset_left = 983.0
+offset_top = 562.0
+offset_right = 1183.0
+offset_bottom = 611.0
+scale = Vector2(1.05765, 1.18067)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -275,10 +279,11 @@ icon_alignment = 1
 [node name="back4" type="Button" parent="Panel2"]
 z_index = 1
 layout_mode = 2
-offset_left = 556.0
-offset_top = 453.0
-offset_right = 756.0
-offset_bottom = 502.0
+offset_left = 983.0
+offset_top = 671.0
+offset_right = 1183.0
+offset_bottom = 720.0
+scale = Vector2(1.05765, 1.18067)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
