@@ -83,8 +83,21 @@ public partial class Player : Area2D
 
         hearts = GetNode<Node2D>("Hearts");
         heartsInitialPosition = hearts.Position;
+        
+        AddToGroup("player");
     }
 
+    public void Heal(int amount)
+    {
+        // 确保不会超过最大生命值
+        currentHealth = Mathf.Min(currentHealth + amount, MaxHealth);
+        GD.Print($"{Name} 恢复 {amount} 点生命值! 当前生命: {currentHealth}");
+    
+        if (HealthBar != null)
+        {
+            HealthBar.Value = currentHealth;
+        }
+    }
     public override void _Process(double delta)
     {
         UpdateAttackAreaPosition();
