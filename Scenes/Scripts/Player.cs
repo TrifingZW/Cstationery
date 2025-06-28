@@ -21,6 +21,8 @@ public partial class Player : Area2D
     public Vector2 Velocity = Vector2.Zero;
     public bool IsJumping = false;
 
+    public static bool IsAnyUlting = false;
+
     private Area2D bodyArea;
     private CollisionShape2D bodyShape;
 
@@ -30,7 +32,7 @@ public partial class Player : Area2D
 
     private bool isAttacking = false;
     private bool isHeavyAttacking = false;
-    private bool isDodging = false;
+    public bool isDodging = false;
     private bool isUlting = false;
     private bool isHit = false;
 
@@ -91,6 +93,10 @@ public partial class Player : Area2D
         else if (IsJumping)
         {
             anim.Animation = "Jump";
+        }
+        else if (isUlting)
+        {
+            anim.Animation = "AbilityAttack";
         }
         else if (Mathf.Abs(Velocity.X) > 0.1f)
         {
@@ -155,7 +161,7 @@ public partial class Player : Area2D
         anim.Animation = "Attack";
         anim.Play();
     }
-    
+
     private void OnAttackHit(Area2D area)
     {
         if (area == attackArea) return;
@@ -223,6 +229,19 @@ public partial class Player : Area2D
         anim.Play();
     }
 
+    public void TriggerUlt()
+    {
+        if (isUlting || isAttacking || isHit || isDodging) return;
+
+        GD.Print($"{Name} 释放终极技能！");
+        isUlting = true;
+        IsAnyUlting = true;
+
+        var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        anim.Animation = "Ulting";
+        anim.Play();
+    }
+
     private void OnAnimationFinished()
     {
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -243,5 +262,42 @@ public partial class Player : Area2D
         {
             isHit = false;
         }
+
+        if (isUlting && anim.Animation == "AbilityAttack")
+        {
+            isUlting = false;
+            IsAnyUlting = false;
+            GD.Print($"{Name} Ulting 播放完毕，生成弹幕！");
+            SpawnUltProjectiles();
+        }
     }
+    
+    private void SpawnUltProjectiles()
+    {
+        var scene = GD.Load<PackedScene>("res://Scenes/PencilHead.tscn");
+        var root = GetTree().CurrentScene;
+
+        // 找到目标玩家
+        Player target = null;
+        foreach (var child in root.GetChildren())
+        {
+            if (child is Player p && p != this)
+            {
+                target = p;
+                break;
+            }
+        }
+
+        if (target == null) return;
+
+        for (int i = 0; i < 10; i++)
+        {
+            var bullet = scene.Instantiate() as PencilHead;
+            bullet.Position = this.Position + new Vector2(0, -i * 20); // 垂直错位
+            bullet.Target = new Vector2(target.Position.X, GroundY);
+            bullet.TargetPlayer = target;
+            GetParent().AddChild(bullet);
+        }
+    }
+
 }

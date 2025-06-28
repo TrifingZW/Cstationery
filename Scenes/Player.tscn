@@ -47,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_avx33")
 }],
-"loop": true,
+"loop": false,
 "name": &"AbilityAttack",
 "speed": 5.0
 }, {
@@ -164,9 +164,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_m0x7a")
-animation = &"GotHit"
-frame = 1
-frame_progress = 1.0
+animation = &"AbilityAttack"
 metadata/_edit_group_ = true
 
 [node name="CollisionBody" type="Area2D" parent="."]

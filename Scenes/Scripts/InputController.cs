@@ -7,6 +7,9 @@ public partial class InputController : FighterController
 
     public override void Tick(double delta)
     {
+        if (Player.IsAnyUlting)
+            return;
+            
         Vector2 input = Vector2.Zero;
 
         if (Input.IsActionPressed(InputPrefix + "move_right"))
@@ -24,5 +27,8 @@ public partial class InputController : FighterController
 
         if (Input.IsActionJustPressed(InputPrefix + "dodge"))
             player.Dodge();
+
+        if (Input.IsActionJustPressed(InputPrefix + "ulting"))
+            player.TriggerUlt();
     }
 }
