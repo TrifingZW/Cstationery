@@ -13,7 +13,8 @@ public partial class Player : Area2D
     [Export] public int Lives = 3;
     [Export] public float AttackOffsetX = 250f;
     [Export] public float BodyOffsetX = 30f;
-
+    [Export] public TextureProgressBar HealthBar;
+    [Export] public TextureProgressBar EnergyBar;
 
 
     public int currentHealth;
@@ -23,9 +24,19 @@ public partial class Player : Area2D
 
     public static bool IsAnyUlting = false;
 
+    private int energy = 0;
+    private const int MaxEnergy = 100;
+
+    private Sprite2D heart1;
+    private Sprite2D heart2;
+    private Sprite2D heart3;
+
+    private Node2D hearts;
+    private Vector2 heartsInitialPosition;
+
+
     private Area2D bodyArea;
     private CollisionShape2D bodyShape;
-
     private Area2D attackArea;
     private CollisionShape2D attackShape;
     private FighterController controller;
@@ -36,7 +47,7 @@ public partial class Player : Area2D
     private bool isUlting = false;
     private bool isHit = false;
 
-   private Player ultTarget;
+    private Player ultTarget;
     private int ultProjectilesArrived = 0;
     private int totalUltProjectiles = 10;
     public override void _Ready()
@@ -58,12 +69,25 @@ public partial class Player : Area2D
         anim.AnimationFinished += OnAnimationFinished;
 
         currentHealth = MaxHealth;
+
+        if (EnergyBar != null)
+            EnergyBar.Value = energy;
+
+        heart1 = GetNode<Sprite2D>("Hearts/Heart1");
+        heart2 = GetNode<Sprite2D>("Hearts/Heart2");
+        heart3 = GetNode<Sprite2D>("Hearts/Heart3");
+
+        UpdateHearts();
+
+        hearts = GetNode<Node2D>("Hearts");
+        heartsInitialPosition = hearts.Position;
     }
 
     public override void _Process(double delta)
     {
         UpdateAttackAreaPosition();
         UpdateBodyPosition();
+        UpdateHeartsPosition();
 
         float deltaF = (float)delta;
 
@@ -148,6 +172,19 @@ public partial class Player : Area2D
         bodyArea.Position = pos;
     }
 
+    private void UpdateHeartsPosition()
+    {
+        var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        bool facingLeft = sprite.FlipH;
+
+        Vector2 pos = heartsInitialPosition;
+        if (facingLeft)
+        {
+            pos.X += 30f; // 向右移动 100
+        }
+        hearts.Position = pos;
+    }
+
 
     public void Attack()
     {
@@ -175,6 +212,7 @@ public partial class Player : Area2D
         {
             GD.Print($"{Name} 命中 {target.Name}");
             target.TakeDamage(80);
+            GainEnergy(10);
         }
     }
 
@@ -183,7 +221,14 @@ public partial class Player : Area2D
         if (isDodging || isHit) return;
 
         currentHealth -= amount;
+        currentHealth = Mathf.Max(currentHealth, 0);
+
         GD.Print($"{Name} 受到伤害，当前血量：{currentHealth}");
+
+        if (HealthBar != null)
+        {
+            HealthBar.Value = currentHealth;
+        }
 
         if (currentHealth <= 0)
         {
@@ -192,6 +237,8 @@ public partial class Player : Area2D
             {
                 GD.Print($"{Name} 损失一命，复活！");
                 currentHealth = MaxHealth;
+                HealthBar.Value = currentHealth;
+                UpdateHearts();
             }
             else
             {
@@ -236,13 +283,20 @@ public partial class Player : Area2D
     {
         if (isUlting || isAttacking || isHit || isDodging) return;
 
+        if (energy < MaxEnergy)
+        {
+            GD.Print($"{Name} 能量不足，无法释放终极技能！");
+            return;
+        }
+
         GD.Print($"{Name} 释放终极技能！");
         isUlting = true;
         IsAnyUlting = true;
 
-        // var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        // anim.Animation = "Ulting";
-        // anim.Play();
+        // 立即清空能量
+        energy = 0;
+        if (EnergyBar != null)
+            EnergyBar.Value = energy;
     }
 
     private void OnAnimationFinished()
@@ -322,4 +376,24 @@ public partial class Player : Area2D
             ultTarget.TakeDamage(400);
         }
     }
+
+    private void GainEnergy(int amount)
+    {
+        if (energy >= MaxEnergy) return;
+
+        energy += amount;
+        energy = Mathf.Min(energy, MaxEnergy);
+
+        if (EnergyBar != null)
+            EnergyBar.Value = energy;
+    }
+    
+    private void UpdateHearts()
+    {
+        heart1.Visible = Lives >= 1;
+        heart2.Visible = Lives >= 2;
+        heart3.Visible = Lives >= 3;
+    }
+
+
 }
