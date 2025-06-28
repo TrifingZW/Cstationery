@@ -16,7 +16,7 @@ public partial class Player : Area2D
 
 
 
-    private int currentHealth;
+    public int currentHealth;
 
     public Vector2 Velocity = Vector2.Zero;
     public bool IsJumping = false;
