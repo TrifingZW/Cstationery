@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dqcl1dgsjgfx"
-path="res://.godot/imported/AiDianMengWaTi-2.ttf-0a947eb5a5ee1723a100da2be5559bca.fontdata"
+path="res://.godot/imported/AiDianMengWaTi-2.ttf-74195c09b26de96488f618ff33fb18cd.fontdata"
 
 [deps]
 
-source_file="res://testZiYuan/Font resources/AiDianMengWaTi-2.ttf"
-dest_files=["res://.godot/imported/AiDianMengWaTi-2.ttf-0a947eb5a5ee1723a100da2be5559bca.fontdata"]
+source_file="res://Art/testZiYuan/Font resources/AiDianMengWaTi-2.ttf"
+dest_files=["res://.godot/imported/AiDianMengWaTi-2.ttf-74195c09b26de96488f618ff33fb18cd.fontdata"]
 
 [params]
 

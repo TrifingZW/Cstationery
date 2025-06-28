@@ -6,7 +6,7 @@ public partial class Player : Area2D
     [Export] public int Speed { get; set; } = 400;
     [Export] public int JumpForce { get; set; } = 1200;
     [Export] public int GravityForce { get; set; } = 3000;
-    [Export] public float GroundY { get; set; } = 600f;
+    [Export] public float GroundY { get; set; } = 750f;
     [Export] public float FallMultiplier { get; set; } = 1.5f;
     [Export] public bool IsAI = false;
     [Export] public int MaxHealth = 1000;

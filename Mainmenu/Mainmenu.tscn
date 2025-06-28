@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://b4avs4ul5y0e0"]
 
 [ext_resource type="Script" uid="uid://yu1to6rg56aw" path="res://Mainmenu/mainmenu.gd" id="1_mxk1q"]
-[ext_resource type="FontFile" uid="uid://dqcl1dgsjgfx" path="res://testZiYuan/Font resources/AiDianMengWaTi-2.ttf" id="2_q3kb3"]
+[ext_resource type="FontFile" uid="uid://dqcl1dgsjgfx" path="res://Art/testZiYuan/Font resources/AiDianMengWaTi-2.ttf" id="2_q3kb3"]
 [ext_resource type="Script" uid="uid://c8f4ib4233qc" path="res://Mainmenu/aidop_con_trol.gd" id="3_prwaj"]
-[ext_resource type="AudioStream" uid="uid://cpmhhlx8rjl3o" path="res://testZiYuan/749338844.mp3" id="3_q3kb3"]
-[ext_resource type="Texture2D" uid="uid://bpw5su6dd3oi" path="res://testZiYuan/未标题-1.png" id="5_sbwks"]
+[ext_resource type="AudioStream" uid="uid://cpmhhlx8rjl3o" path="res://Art/testZiYuan/749338844.mp3" id="3_q3kb3"]
+[ext_resource type="Texture2D" uid="uid://bpw5su6dd3oi" path="res://Art/testZiYuan/未标题-1.png" id="5_sbwks"]
 [ext_resource type="Script" uid="uid://cmcdnl5vkncmq" path="res://Mainmenu/check_button.gd" id="6_aabpv"]
 [ext_resource type="Texture2D" uid="uid://dsk2d5pi7byv5" path="res://Select the Character screen/123.png" id="7_4v483"]
 
