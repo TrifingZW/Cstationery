@@ -28,3 +28,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Cstationery"
+
+[input]
+
+"鼠标移动"={
+"deadzone": 0.2,
+"events": []
+}

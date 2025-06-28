@@ -32,15 +32,20 @@ func _on_back_pressed() -> void:
 	_ready()
 
 
-func _on_twopeople_pressed() -> void:
-# get_tree().change_scene_to_file(" ")
-	print("双人")
+# 使用预加载优化
+var character_select_scene = preload("res://Select the Character screen/select_the_character_screen.tscn")
 
+func _on_twopeople_pressed() -> void:
+	# 确保这行使用制表符缩进
+	var result = get_tree().change_scene_to_packed(character_select_scene)
+	if result != OK:
+		printerr("场景加载失败: ", result)
 
 func _on_onepeople_pressed() -> void:
-# get_tree().change_scene_to_file(" ")
-	print("单人")
-
+	# 确保这行使用制表符缩进
+	var result = get_tree().change_scene_to_packed(character_select_scene)
+	if result != OK:
+		printerr("场景加载失败: ", result)
 
 func _on_back1_pressed() -> void:
 	panel_2.visible=false

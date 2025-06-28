@@ -1,16 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxdyuprj68j3u"]
+[gd_scene load_steps=5 format=3 uid="uid://bxdyuprj68j3u"]
 
 [ext_resource type="Texture2D" uid="uid://f2ufgl7bvbwe" path="res://testZiYuan/123.png" id="1_hrnqq"]
+[ext_resource type="Texture2D" uid="uid://cqt2cvsyh5kaw" path="res://testZiYuan/22222.png" id="2_e3ebu"]
+[ext_resource type="Texture2D" uid="uid://dcqnwsftxt4cj" path="res://testZiYuan/手2.png" id="3_rdxmy"]
+[ext_resource type="Script" uid="uid://q1l8vuyqut6d" path="res://Select the Character screen/手2.gd" id="4_jcoyh"]
 
 [node name="One_Select the Character screen" type="Node2D"]
 
 [node name="Button" type="Button" parent="."]
-offset_left = 53.0
-offset_top = 106.0
-offset_right = 179.0
-offset_bottom = 231.0
+z_index = 1
+offset_left = 403.0
+offset_top = 436.0
+offset_right = 529.0
+offset_bottom = 561.0
+scale = Vector2(2.16767, 2.18783)
 
 [node name="123" type="Sprite2D" parent="Button"]
-position = Vector2(61, 62)
+position = Vector2(62, 57)
 scale = Vector2(0.1425, 0.1325)
 texture = ExtResource("1_hrnqq")
+
+[node name="Button2" type="Button" parent="."]
+z_index = 1
+offset_left = 811.0
+offset_top = 436.0
+offset_right = 937.0
+offset_bottom = 561.0
+scale = Vector2(2.16767, 2.18783)
+
+[node name="123" type="Sprite2D" parent="Button2"]
+position = Vector2(62, 57)
+scale = Vector2(0.1425, 0.1325)
+texture = ExtResource("1_hrnqq")
+
+[node name="Button3" type="Button" parent="."]
+z_index = 1
+offset_left = 1262.0
+offset_top = 436.0
+offset_right = 1388.0
+offset_bottom = 561.0
+scale = Vector2(2.16767, 2.18783)
+
+[node name="123" type="Sprite2D" parent="Button3"]
+position = Vector2(62, 57)
+scale = Vector2(0.1425, 0.1325)
+texture = ExtResource("1_hrnqq")
+
+[node name="22222" type="Sprite2D" parent="."]
+position = Vector2(969, 539.5)
+scale = Vector2(1.00937, 0.999074)
+texture = ExtResource("2_e3ebu")
+
+[node name="手2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1003, 814)
+scale = Vector2(0.973958, 1)
+texture = ExtResource("3_rdxmy")
+script = ExtResource("4_jcoyh")
