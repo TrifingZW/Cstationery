@@ -11,15 +11,22 @@ public partial class Player : Area2D
     [Export] public bool IsAI = false;
     [Export] public int MaxHealth = 1000;
     [Export] public int Lives = 3;
+    [Export] public float AttackOffsetX = 250f;
+    [Export] public float BodyOffsetX = 30f;
+
+
 
     private int currentHealth;
 
     public Vector2 Velocity = Vector2.Zero;
     public bool IsJumping = false;
 
-    private Area2D? attackArea;
-    private FighterController? controller;
-    private CollisionShape2D? attackShape;
+    private Area2D bodyArea;
+    private CollisionShape2D bodyShape;
+
+    private Area2D attackArea;
+    private CollisionShape2D attackShape;
+    private FighterController controller;
 
     private bool isAttacking = false;
     private bool isHeavyAttacking = false;
@@ -27,22 +34,20 @@ public partial class Player : Area2D
     private bool isUlting = false;
     private bool isHit = false;
 
-
     public override void _Ready()
     {
+        bodyArea = GetNode<Area2D>("CollisionBody");
+        bodyShape = bodyArea.GetNode<CollisionShape2D>("CollisionShape2D");
         attackArea = GetNode<Area2D>("AttackArea");
-        attackArea!.Monitoring = false;
-        attackArea.BodyEntered += OnAttackHit;
         attackShape = attackArea.GetNode<CollisionShape2D>("CollisionShape2D");
-        attackShape!.Disabled = true;
 
-        GD.Print("AttackArea Layer: " + attackArea.CollisionLayer);
-        GD.Print("AttackArea Mask: " + attackArea.CollisionMask);
+        attackArea.Monitoring = false;
+        attackShape.Disabled = true;
 
-
+        attackArea.AreaEntered += OnAttackHit;
 
         controller = GetNode<FighterController>("FighterController");
-        controller!.Init(this);
+        controller.Init(this);
 
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         anim.AnimationFinished += OnAnimationFinished;
@@ -52,19 +57,16 @@ public partial class Player : Area2D
 
     public override void _Process(double delta)
     {
+        UpdateAttackAreaPosition();
+        UpdateBodyPosition();
+
         float deltaF = (float)delta;
 
-        controller!.Tick(delta);
+        controller.Tick(delta);
 
-        // Gravity with fall boost
-        if (Velocity.Y > 0)
-            Velocity.Y += GravityForce * FallMultiplier * deltaF;
-        else
-            Velocity.Y += GravityForce * deltaF;
-
+        Velocity.Y += (Velocity.Y > 0 ? GravityForce * FallMultiplier : GravityForce) * deltaF;
         Position += Velocity * deltaF;
 
-        // Landing
         if (Position.Y >= GroundY)
         {
             Position = new Vector2(Position.X, GroundY);
@@ -72,32 +74,21 @@ public partial class Player : Area2D
             IsJumping = false;
         }
 
-        // Animation
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
         if (isHit)
         {
             anim.Animation = "GotHit";
-            anim.Play();
-            return;
         }
-
-        if (isAttacking)
+        else if (isAttacking)
         {
-            // 播放攻击动画，不做其他切换
             anim.Animation = "Attack";
-            anim.Play();
-            return;
         }
-
-        if (isDodging)
+        else if (isDodging)
         {
             anim.Animation = "Dodge";
-            anim.Play();
-            return;
         }
-
-        if (IsJumping)
+        else if (IsJumping)
         {
             anim.Animation = "Jump";
         }
@@ -112,8 +103,6 @@ public partial class Player : Area2D
         }
 
         anim.Play();
-
-        UpdateAttackAreaDirection();
     }
 
     public void Move(Vector2 input)
@@ -130,88 +119,92 @@ public partial class Player : Area2D
         }
     }
 
-    private void UpdateAttackAreaDirection()
+    private void UpdateAttackAreaPosition()
     {
-        var flip = GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH;
-        var pos = attackArea!.Position;
+        var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        bool facingLeft = sprite.FlipH;
 
-        // 假设默认朝左攻击，翻转时朝右
-        pos.X = Math.Abs(pos.X) * (flip ? -1 : 1);
+        Vector2 pos = attackArea.Position;
+        pos.X = facingLeft ? -AttackOffsetX : 0;
         attackArea.Position = pos;
     }
 
+    private void UpdateBodyPosition()
+    {
+        var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        bool facingLeft = sprite.FlipH;
+
+        Vector2 pos = bodyArea.Position;
+        pos.X = facingLeft ? BodyOffsetX : 0;
+        bodyArea.Position = pos;
+    }
+
+
     public void Attack()
     {
-        GD.Print("攻击动作！");
+        if (isAttacking || isHit || isDodging || isUlting || isHeavyAttacking)
+            return;
+
+        GD.Print($"{Name} 发起攻击！");
         isAttacking = true;
 
-        attackArea!.Monitoring = true;
-        attackShape!.Disabled = false; // ✅ 启用攻击判定区域
-
-        GetTree().CreateTimer(0.15f).Timeout += () =>
-        {
-            attackArea.Monitoring = false;
-            attackShape!.Disabled = true; // ✅ 自动隐藏攻击区域
-        };
+        attackArea.Monitoring = true;
+        attackShape.Disabled = false;
 
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         anim.Animation = "Attack";
         anim.Play();
     }
+    
+    private void OnAttackHit(Area2D area)
+    {
+        if (area == attackArea) return;
+
+        GD.Print($"{Name} 检测命中：{area.Name}");
+
+        if (area.Owner is Player target && target != this)
+        {
+            GD.Print($"{Name} 命中 {target.Name}");
+            target.TakeDamage(80);
+        }
+    }
 
     public void TakeDamage(int amount)
     {
-        if (isDodging || isHit) return; // 躲避时不会受伤
+        if (isDodging || isHit) return;
 
         currentHealth -= amount;
-        GD.Print($"受到伤害！当前血量：{currentHealth}");
+        GD.Print($"{Name} 受到伤害，当前血量：{currentHealth}");
 
         if (currentHealth <= 0)
         {
             Lives--;
             if (Lives > 0)
             {
-                GD.Print("损失一命！复活！");
+                GD.Print($"{Name} 损失一命，复活！");
                 currentHealth = MaxHealth;
-                // 可以播放倒地再起动画
             }
             else
             {
-                GD.Print("游戏结束！");
-                QueueFree(); // 角色死亡
+                GD.Print($"{Name} 游戏结束！");
+                QueueFree();
+                return;
             }
         }
 
-        GotHit(); // 播放受击动画
+        GotHit();
     }
 
-    private void OnAttackHit(Node body)
+    public void GotHit()
     {
-        GD.Print($"命中：{body.Name}");
+        if (isHit || isDodging) return;
 
-        // 如果是双人模式，对方是 Player 并且不是自己
-        if (!IsAI && body is Player target && target != this)
-        {
-            target.TakeDamage(80);
-        }
-    }
+        GD.Print($"{Name} 被击中！");
+        isHit = true;
 
-    private void OnAnimationFinished()
-    {
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-
-        if (anim.Animation == "Attack" && isAttacking)
-        {
-            isAttacking = false;
-        }
-        if (anim.Animation == "Dodge" && isDodging)
-        {
-            isDodging = false;
-        }
-        if (anim.Animation == "GotHit" && isHit)
-        {
-            isHit = false;
-        }
+        anim.Animation = "GotHit";
+        anim.Play();
     }
 
     public void Dodge()
@@ -219,13 +212,10 @@ public partial class Player : Area2D
         if (isAttacking || isHeavyAttacking || isDodging || isUlting)
             return;
 
-        GD.Print("躲避！");
         isDodging = true;
 
-        // 向后退一步（根据当前朝向）
         float dodgeDistance = 100f;
         float direction = GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH ? 1f : -1f;
-
         Position += new Vector2(dodgeDistance * direction, 0);
 
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -233,15 +223,25 @@ public partial class Player : Area2D
         anim.Play();
     }
 
-    public void GotHit()
+    private void OnAnimationFinished()
     {
-        if (isHit || isDodging) return; // 躲避中不会受击
-
-        GD.Print("被击中！");
-        isHit = true;
-
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        anim.Animation = "GotHit";
-        anim.Play();
+
+        if (isAttacking && anim.Animation == "Attack")
+        {
+            isAttacking = false;
+            attackArea.Monitoring = false;
+            attackShape.Disabled = true;
+        }
+
+        if (isDodging && anim.Animation == "Dodge")
+        {
+            isDodging = false;
+        }
+
+        if (isHit && anim.Animation == "GotHit")
+        {
+            isHit = false;
+        }
     }
 }

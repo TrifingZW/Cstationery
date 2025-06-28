@@ -7,9 +7,6 @@
 [node name="PlayerB" parent="." instance=ExtResource("1_b5ayd")]
 position = Vector2(1439, 0)
 
-[node name="CollisionShape2D" parent="PlayerB" index="1"]
-scale = Vector2(1, 1.00423)
-
 [node name="FighterController" parent="PlayerB" index="3"]
 InputPrefix = "playerB_"
 
