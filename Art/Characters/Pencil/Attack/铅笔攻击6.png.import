@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://darps70frsxbi"
-path="res://.godot/imported/铅笔移动3.jpg-b7d5ba0cc4bcf2a3938a6295162719f2.ctex"
+uid="uid://bl1yf6ojmg20l"
+path="res://.godot/imported/铅笔攻击6.png-67ce265f819459d7287fd42189b41dea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/Pencil/Walk/铅笔移动3.jpg"
-dest_files=["res://.godot/imported/铅笔移动3.jpg-b7d5ba0cc4bcf2a3938a6295162719f2.ctex"]
+source_file="res://Art/Characters/Pencil/Attack/铅笔攻击6.png"
+dest_files=["res://.godot/imported/铅笔攻击6.png-67ce265f819459d7287fd42189b41dea.ctex"]
 
 [params]
 

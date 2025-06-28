@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tlj0cayc38xf"
-path="res://.godot/imported/铅笔移动5.jpg-5c174215e35ad62b4aeface3291b6ad3.ctex"
+uid="uid://bji0xgthjm2in"
+path="res://.godot/imported/铅笔技能1.png-43b838f6eb443993c3b7e8d666c302d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/Pencil/Walk/铅笔移动5.jpg"
-dest_files=["res://.godot/imported/铅笔移动5.jpg-5c174215e35ad62b4aeface3291b6ad3.ctex"]
+source_file="res://Art/Characters/Pencil/AbilityAttack/铅笔技能1.png"
+dest_files=["res://.godot/imported/铅笔技能1.png-43b838f6eb443993c3b7e8d666c302d5.ctex"]
 
 [params]
 

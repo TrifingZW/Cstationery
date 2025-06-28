@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn70vswmufa7m"
-path="res://.godot/imported/铅笔移动1.jpg-ef059a5702e5f5b76e52ced54d865e32.ctex"
+uid="uid://c0q0tby7hjtme"
+path="res://.godot/imported/铅笔受击.png-45f8e875081a6ff842148c77cd7db7ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/Pencil/Walk/铅笔移动1.jpg"
-dest_files=["res://.godot/imported/铅笔移动1.jpg-ef059a5702e5f5b76e52ced54d865e32.ctex"]
+source_file="res://Art/Characters/Pencil/GotHit/铅笔受击.png"
+dest_files=["res://.godot/imported/铅笔受击.png-45f8e875081a6ff842148c77cd7db7ee.ctex"]
 
 [params]
 
