@@ -2,6 +2,7 @@ extends Node2D
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 @onready var panel: Panel = $Panel
 @onready var panel_2: Panel = $Panel2
+@onready var panel_3: Panel = $Panel3
 
 func _process(delt) :
 	pass
@@ -10,11 +11,13 @@ func _ready():
 	v_box_container.visible=true
 	panel.visible=false
 	panel_2.visible=false
+	panel_3.visible=false
 
 
 func _on_play_button_down() -> void:
 	panel_2.visible=true
 	v_box_container.visible=false
+	
 
 
 
@@ -50,3 +53,13 @@ func _on_onepeople_pressed() -> void:
 func _on_back1_pressed() -> void:
 	panel_2.visible=false
 	v_box_container.visible=true
+
+
+func _on_play2_pressed() -> void:
+	v_box_container.visible=false
+	panel_3.visible=true
+
+
+func _on_back_5_pressed() -> void:
+	v_box_container.visible=true
+	panel_3.visible=false
