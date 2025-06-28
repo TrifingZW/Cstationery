@@ -95,9 +95,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_lyrkg")
 }],
-"loop": true,
+"loop": false,
 "name": &"GotHit",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -152,8 +152,8 @@ animations = [{
 radius = 45.0
 height = 176.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_avx33"]
-radius = 168.048
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utwlt"]
+size = Vector2(175, 228)
 
 [node name="Player" type="Area2D"]
 collision_mask = 2
@@ -164,12 +164,14 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_m0x7a")
-animation = &"Dodge"
+animation = &"GotHit"
 frame = 1
 frame_progress = 1.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBody" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBody"]
 position = Vector2(-20, 30)
 shape = SubResource("CapsuleShape2D_yoq75")
 metadata/_edit_group_ = true
@@ -179,8 +181,8 @@ collision_layer = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-11, 14)
-shape = SubResource("CircleShape2D_avx33")
+position = Vector2(117.5, 2)
+shape = SubResource("RectangleShape2D_utwlt")
 
 [node name="FighterController" type="Node" parent="."]
 script = ExtResource("23_i2e8t")
