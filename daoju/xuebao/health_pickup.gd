@@ -2,7 +2,7 @@
 extends Area2D
 
 @export var heal_amount: int = 100
-@export var respawn_time: float = 15.0  # 重生时间（秒）
+@export var respawn_time: float = 1.0  # 重生时间（秒）
 @export var spawn_area_min: Vector2 = Vector2(150, 0)  # 生成区域最小坐标
 @export var spawn_area_max: Vector2 = Vector2(1750, 0)  # 生成区域最大坐标
 @export var spawn_y_position: float = 750 # 固定Y轴位置
