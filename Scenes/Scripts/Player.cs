@@ -16,7 +16,6 @@ public partial class Player : Area2D
 
 
 
-    
     public int currentHealth;
 
     public Vector2 Velocity = Vector2.Zero;
@@ -42,9 +41,6 @@ public partial class Player : Area2D
     private int totalUltProjectiles = 10;
     public override void _Ready()
     {
-        CollisionLayer = 1; // 玩家在第1层
-        CollisionMask = 2;  // 检测第2层（道具层）
-        
         bodyArea = GetNode<Area2D>("CollisionBody");
         bodyShape = bodyArea.GetNode<CollisionShape2D>("CollisionShape2D");
         attackArea = GetNode<Area2D>("AttackArea");
@@ -62,18 +58,8 @@ public partial class Player : Area2D
         anim.AnimationFinished += OnAnimationFinished;
 
         currentHealth = MaxHealth;
-        AddToGroup("player");
-        
     }
 
-    
-    public void Heal(int amount)
-    {
-        // 确保不会超过最大生命值
-        currentHealth = Mathf.Min(currentHealth + amount, MaxHealth);
-        GD.Print($"恢复 {amount} 点生命值! 当前生命: {currentHealth}");
-
-    }
     public override void _Process(double delta)
     {
         UpdateAttackAreaPosition();
