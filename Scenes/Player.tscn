@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dfb013ukfbxph"]
+[gd_scene load_steps=32 format=3 uid="uid://w21kp5u8ddoa"]
 
 [ext_resource type="Script" uid="uid://clf147quohe4c" path="res://Scenes/Scripts/Player.cs" id="1_glx4g"]
 [ext_resource type="Texture2D" uid="uid://sys2ypudcjhf" path="res://Art/Characters/Pencil/Idle/铅笔待机1.png" id="1_yoq75"]
