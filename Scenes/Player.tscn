@@ -1,0 +1,188 @@
+[gd_scene load_steps=32 format=3 uid="uid://dfb013ukfbxph"]
+
+[ext_resource type="Script" uid="uid://clf147quohe4c" path="res://Scenes/Scripts/Player.cs" id="1_glx4g"]
+[ext_resource type="Texture2D" uid="uid://sys2ypudcjhf" path="res://Art/Characters/Pencil/Idle/铅笔待机1.png" id="1_yoq75"]
+[ext_resource type="Texture2D" uid="uid://bwvvje56q6o05" path="res://Art/Characters/Pencil/Idle/铅笔待机2.png" id="2_ksbbd"]
+[ext_resource type="Texture2D" uid="uid://bji0xgthjm2in" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能1.png" id="2_utwlt"]
+[ext_resource type="Texture2D" uid="uid://bmbic84ls1hlh" path="res://Art/Characters/Pencil/Attack/铅笔攻击1.png" id="2_x63xi"]
+[ext_resource type="Texture2D" uid="uid://b602ge8ycldhv" path="res://Art/Characters/Pencil/Idle/铅笔待机3.png" id="3_glx4g"]
+[ext_resource type="Texture2D" uid="uid://bycnp0h4cjwqw" path="res://Art/Characters/Pencil/Attack/铅笔攻击2.png" id="3_i2e8t"]
+[ext_resource type="Texture2D" uid="uid://wxcuiwgwn4nl" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能2.png" id="3_kih0c"]
+[ext_resource type="Texture2D" uid="uid://ddcd3e0ki2keq" path="res://Art/Characters/Pencil/Jump/铅笔跳跃1.png" id="4_ksbbd"]
+[ext_resource type="Texture2D" uid="uid://ls10xuldwclv" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能3.png" id="4_lyrkg"]
+[ext_resource type="Texture2D" uid="uid://b1pnsrhv2kcvx" path="res://Art/Characters/Pencil/Attack/铅笔攻击3.png" id="4_qidb7"]
+[ext_resource type="Texture2D" uid="uid://cqnvr0dy5ak1x" path="res://Art/Characters/Pencil/Attack/铅笔攻击4.png" id="5_70hv0"]
+[ext_resource type="Texture2D" uid="uid://dm8y0mvhnd31j" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能4.png" id="5_c43xd"]
+[ext_resource type="Texture2D" uid="uid://dhhrnba8alwik" path="res://Art/Characters/Pencil/Jump/铅笔跳跃3.png" id="5_glx4g"]
+[ext_resource type="Texture2D" uid="uid://bopqdu4ipve8i" path="res://Art/Characters/Pencil/Attack/铅笔攻击5.png" id="6_8flut"]
+[ext_resource type="Texture2D" uid="uid://dq8tkh2r6qpxj" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能5.png" id="6_avx33"]
+[ext_resource type="Texture2D" uid="uid://dh5x6yvs0ne7i" path="res://Art/Characters/Pencil/Walk/铅笔移动1.png" id="6_miouo"]
+[ext_resource type="Texture2D" uid="uid://bbjfc7mafsuov" path="res://Art/Characters/Pencil/Walk/铅笔移动2.png" id="7_o3h8g"]
+[ext_resource type="Texture2D" uid="uid://bl1yf6ojmg20l" path="res://Art/Characters/Pencil/Attack/铅笔攻击6.png" id="7_u7x0b"]
+[ext_resource type="Texture2D" uid="uid://cbibvlt8m22fw" path="res://Art/Characters/Pencil/Walk/铅笔移动3.png" id="8_1e7my"]
+[ext_resource type="Texture2D" uid="uid://cx5hykukdhj55" path="res://Art/Characters/Pencil/Attack/铅笔攻击7.png" id="8_utwlt"]
+[ext_resource type="Texture2D" uid="uid://yna6sdyllsf7" path="res://Art/Characters/Pencil/Walk/铅笔移动5.png" id="9_arntx"]
+[ext_resource type="Texture2D" uid="uid://drpgef8asaoiy" path="res://Art/Characters/Pencil/Avoid/铅笔躲避1.png" id="10_i2e8t"]
+[ext_resource type="Texture2D" uid="uid://b2miacmk0041p" path="res://Art/Characters/Pencil/Walk/铅笔移动6.png" id="10_lslt6"]
+[ext_resource type="Texture2D" uid="uid://c0q0tby7hjtme" path="res://Art/Characters/Pencil/GotHit/铅笔受击.png" id="11_lyrkg"]
+[ext_resource type="Texture2D" uid="uid://g8bcsxk7228h" path="res://Art/Characters/Pencil/Avoid/铅笔躲避2.png" id="11_qidb7"]
+[ext_resource type="Texture2D" uid="uid://ck6cx6irikikc" path="res://Art/Characters/Pencil/Walk/铅笔移动7.png" id="11_ulo2v"]
+[ext_resource type="Script" uid="uid://bherxb068feyy" path="res://Scenes/Scripts/InputController.cs" id="23_i2e8t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m0x7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_utwlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kih0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lyrkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c43xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_avx33")
+}],
+"loop": true,
+"name": &"AbilityAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x63xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2e8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qidb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_70hv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8flut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u7x0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_utwlt")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_i2e8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qidb7")
+}],
+"loop": false,
+"name": &"Dodge",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yoq75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lyrkg")
+}],
+"loop": false,
+"name": &"GotHit",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yoq75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ksbbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_glx4g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ksbbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_glx4g")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("6_miouo")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_o3h8g")
+}, {
+"duration": 0.7,
+"texture": ExtResource("8_1e7my")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_arntx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_lslt6")
+}, {
+"duration": 0.7,
+"texture": ExtResource("11_ulo2v")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yoq75"]
+radius = 45.0
+height = 176.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utwlt"]
+size = Vector2(175, 228)
+
+[node name="Player" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_glx4g")
+JumpForce = 1100
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_m0x7a")
+animation = &"GotHit"
+frame = 1
+frame_progress = 1.0
+metadata/_edit_group_ = true
+
+[node name="CollisionBody" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBody"]
+position = Vector2(-20, 30)
+shape = SubResource("CapsuleShape2D_yoq75")
+metadata/_edit_group_ = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(117.5, 2)
+shape = SubResource("RectangleShape2D_utwlt")
+
+[node name="FighterController" type="Node" parent="."]
+script = ExtResource("23_i2e8t")
