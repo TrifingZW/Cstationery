@@ -7,28 +7,18 @@ public partial class PencilHead : Node2D
     public Player TargetPlayer;
     public float Speed = 800f;
 
+    public Player UltOwner;
+    public bool IsLast = false;
+
     public override void _Process(double delta)
     {
         Position = Position.MoveToward(Target, Speed * (float)delta);
-
         if (Position.DistanceTo(Target) < 10f)
         {
-            if (TargetPlayer.IsJumping)
+            if (IsLast)
             {
-                GD.Print($"{TargetPlayer.Name} 跳跃中，免疫攻击！");
-                // 无伤害
+                UltOwner?.NotifyUltFinalHit();
             }
-            else if (TargetPlayer.isDodging)
-            {
-                GD.Print($"{TargetPlayer.Name} 躲避中，受到 200 伤害！");
-                TargetPlayer.TakeDamage(200);
-            }
-            else
-            {
-                GD.Print($"{TargetPlayer.Name} 被直接命中，受到 400 伤害！");
-                TargetPlayer.TakeDamage(400);
-            }
-
             QueueFree();
         }
     }
