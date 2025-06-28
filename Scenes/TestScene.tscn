@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdxhlkopec1sx"]
+
+[ext_resource type="PackedScene" uid="uid://dfb013ukfbxph" path="res://Scenes/Player.tscn" id="1_b5ayd"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="PlayerB" parent="." instance=ExtResource("1_b5ayd")]
+position = Vector2(1439, 0)
+
+[node name="CollisionShape2D" parent="PlayerB" index="1"]
+scale = Vector2(1, 1.00423)
+
+[node name="FighterController" parent="PlayerB" index="3"]
+InputPrefix = "playerB_"
+
+[node name="PlayerA" parent="." instance=ExtResource("1_b5ayd")]
+position = Vector2(436, 0)
+
+[editable path="PlayerB"]
+[editable path="PlayerA"]
