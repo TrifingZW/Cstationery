@@ -37,6 +37,9 @@ public partial class Player : Area2D
     private bool isUlting = false;
     private bool isHit = false;
 
+   private Player ultTarget;
+    private int ultProjectilesArrived = 0;
+    private int totalUltProjectiles = 10;
     public override void _Ready()
     {
         CollisionLayer = 1; // 玩家在第1层
@@ -251,9 +254,9 @@ public partial class Player : Area2D
         isUlting = true;
         IsAnyUlting = true;
 
-        var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        anim.Animation = "Ulting";
-        anim.Play();
+        // var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        // anim.Animation = "Ulting";
+        // anim.Play();
     }
 
     private void OnAnimationFinished()
@@ -285,33 +288,52 @@ public partial class Player : Area2D
             SpawnUltProjectiles();
         }
     }
-    
+
     private void SpawnUltProjectiles()
     {
         var scene = GD.Load<PackedScene>("res://Scenes/PencilHead.tscn");
         var root = GetTree().CurrentScene;
 
         // 找到目标玩家
-        Player target = null;
+        ultTarget = null;
         foreach (var child in root.GetChildren())
         {
             if (child is Player p && p != this)
             {
-                target = p;
+                ultTarget = p;
                 break;
             }
         }
 
-        if (target == null) return;
+        if (ultTarget == null) return;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < totalUltProjectiles; i++)
         {
             var bullet = scene.Instantiate() as PencilHead;
-            bullet.Position = this.Position + new Vector2(0, -i * 20); // 垂直错位
-            bullet.Target = new Vector2(target.Position.X, GroundY);
-            bullet.TargetPlayer = target;
+            bullet.Position = this.Position + new Vector2(0, -i * 20);
+            bullet.Target = new Vector2(ultTarget.Position.X, GroundY);
+            bullet.TargetPlayer = ultTarget;
+            bullet.UltOwner = this;
+            bullet.IsLast = (i == totalUltProjectiles - 1);
             GetParent().AddChild(bullet);
         }
     }
 
+    public void NotifyUltFinalHit()
+    {
+        if (ultTarget == null) return;
+
+        if (ultTarget.IsJumping)
+        {
+            GD.Print($"{ultTarget.Name} 跳跃中，免疫大招！");
+        }
+        else if (ultTarget.isDodging)
+        {
+            ultTarget.TakeDamage(200);
+        }
+        else
+        {
+            ultTarget.TakeDamage(400);
+        }
+    }
 }
