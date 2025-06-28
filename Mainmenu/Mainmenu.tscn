@@ -1,0 +1,316 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4avs4ul5y0e0"]
+
+[ext_resource type="Script" uid="uid://yu1to6rg56aw" path="res://Mainmenu/mainmenu.gd" id="1_mxk1q"]
+[ext_resource type="FontFile" uid="uid://dqcl1dgsjgfx" path="res://testZiYuan/Font resources/AiDianMengWaTi-2.ttf" id="2_q3kb3"]
+[ext_resource type="Script" uid="uid://c8f4ib4233qc" path="res://Mainmenu/aidop_con_trol.gd" id="3_prwaj"]
+[ext_resource type="AudioStream" uid="uid://cpmhhlx8rjl3o" path="res://testZiYuan/749338844.mp3" id="3_q3kb3"]
+[ext_resource type="Texture2D" uid="uid://bpw5su6dd3oi" path="res://testZiYuan/未标题-1.png" id="5_sbwks"]
+[ext_resource type="Script" uid="uid://cmcdnl5vkncmq" path="res://Mainmenu/check_button.gd" id="6_aabpv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxk1q"]
+bg_color = Color(0.63181, 0.594645, 0.547308, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3kb3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prwaj"]
+draw_center = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_prwaj"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_sbwks"]
+color = Color(0.43089, 0.436341, 0.966311, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q3kb3"]
+
+[node name="Mainmenu" type="Node2D"]
+script = ExtResource("1_mxk1q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+offset_left = 786.0
+offset_top = 159.0
+offset_right = 1306.0
+offset_bottom = 857.0
+scale = Vector2(1.12, 1.2)
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 130
+text = "手当其冲"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 20
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
+text = "开始游戏"
+icon_alignment = 1
+
+[node name="setting" type="Button" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3kb3")
+text = "设置"
+icon_alignment = 1
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_prwaj")
+text = "退出游戏"
+icon_alignment = 1
+
+[node name="主背景" type="Sprite2D" parent="VBoxContainer"]
+self_modulate = Color(0.881937, 0.881937, 0.881937, 1)
+show_behind_parent = true
+top_level = true
+position = Vector2(963.25, 538)
+scale = Vector2(0.999739, 1.0037)
+texture = ExtResource("5_sbwks")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q3kb3")
+volume_db = -22.486
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 589.0
+offset_top = 284.0
+offset_right = 1327.0
+offset_bottom = 843.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 35.0
+offset_right = 454.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 50
+text = "设置选项"
+
+[node name="back" type="Button" parent="Panel"]
+layout_mode = 2
+offset_left = 254.0
+offset_top = 430.0
+offset_right = 446.0
+offset_bottom = 479.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
+text = "返回主菜单
+"
+icon_alignment = 1
+
+[node name="AidopConTrol" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 150.0
+offset_right = 555.0
+offset_bottom = 185.0
+theme_override_styles/slider = SubResource("StyleBoxLine_prwaj")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_sbwks")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_q3kb3")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("3_prwaj")
+audio_bus_name = "Master"
+
+[node name="CheckButton" type="CheckButton" parent="Panel"]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 198.0
+offset_right = 550.0
+offset_bottom = 261.0
+text = "全屏游玩"
+script = ExtResource("6_aabpv")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 4.0
+offset_right = 1155.0
+offset_bottom = 644.0
+
+[node name="主背景2" type="Sprite2D" parent="Panel2"]
+self_modulate = Color(0.881937, 0.881937, 0.881937, 1)
+show_behind_parent = true
+top_level = true
+position = Vector2(958, 538)
+scale = Vector2(0.994922, 1.0037)
+texture = ExtResource("5_sbwks")
+
+[node name="Label2" type="Label" parent="Panel2"]
+z_index = 1
+layout_mode = 0
+offset_left = 916.0
+offset_top = 319.0
+offset_right = 1266.0
+offset_bottom = 406.0
+scale = Vector2(1.05765, 1.18067)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 50
+text = "请选择游戏模式"
+
+[node name="back2" type="Button" parent="Panel2"]
+z_index = 1
+layout_mode = 2
+offset_left = 983.0
+offset_top = 453.0
+offset_right = 1183.0
+offset_bottom = 502.0
+scale = Vector2(1.05765, 1.18067)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
+text = "双人模式
+"
+icon_alignment = 1
+
+[node name="back3" type="Button" parent="Panel2"]
+z_index = 1
+layout_mode = 2
+offset_left = 983.0
+offset_top = 562.0
+offset_right = 1183.0
+offset_bottom = 611.0
+scale = Vector2(1.05765, 1.18067)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
+text = "单人模式"
+icon_alignment = 1
+
+[node name="back4" type="Button" parent="Panel2"]
+z_index = 1
+layout_mode = 2
+offset_left = 983.0
+offset_top = 671.0
+offset_right = 1183.0
+offset_bottom = 720.0
+scale = Vector2(1.05765, 1.18067)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
+text = "返回主菜单"
+icon_alignment = 1
+
+[connection signal="button_down" from="VBoxContainer/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="VBoxContainer/setting" to="." method="_on_setting_button_down"]
+[connection signal="button_down" from="VBoxContainer/exit" to="." method="_on_exit_button_down"]
+[connection signal="pressed" from="Panel/back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Panel/AidopConTrol" to="Panel/AidopConTrol" method="_on_value_changed"]
+[connection signal="toggled" from="Panel/CheckButton" to="Panel/CheckButton" method="_on_toggled"]
+[connection signal="pressed" from="Panel2/back2" to="." method="_on_twopeople_pressed"]
+[connection signal="pressed" from="Panel2/back3" to="." method="_on_onepeople_pressed"]
+[connection signal="pressed" from="Panel2/back4" to="." method="_on_back1_pressed"]
