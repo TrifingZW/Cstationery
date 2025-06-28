@@ -1,4 +1,3 @@
-// cstationery_character.rs
 use godot::prelude::*;
 use godot::classes::{CharacterBody2D, ICharacterBody2D};
 
