@@ -395,7 +395,7 @@ public partial class Player : Area2D
         if (EnergyBar != null)
             EnergyBar.Value = energy;
     }
-    
+
     private void UpdateHearts()
     {
         heart1.Visible = Lives >= 1;
@@ -403,5 +403,18 @@ public partial class Player : Area2D
         heart3.Visible = Lives >= 3;
     }
 
+    public void SetHealthBar(TextureProgressBar bar)
+    {
+        HealthBar = bar;
+        if (HealthBar != null)
+            HealthBar.Value = currentHealth;
+    }
+
+    public void SetEnergyBar(TextureProgressBar bar)
+    {
+        EnergyBar = bar;
+        if (EnergyBar != null)
+            EnergyBar.Value = energy;
+    }
 
 }
