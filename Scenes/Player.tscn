@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://w21kp5u8ddoa"]
+[gd_scene load_steps=33 format=3 uid="uid://w21kp5u8ddoa"]
 
 [ext_resource type="Script" uid="uid://clf147quohe4c" path="res://Scenes/Scripts/Player.cs" id="1_glx4g"]
 [ext_resource type="Texture2D" uid="uid://sys2ypudcjhf" path="res://Art/Characters/Pencil/Idle/铅笔待机1.png" id="1_yoq75"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://g8bcsxk7228h" path="res://Art/Characters/Pencil/Avoid/铅笔躲避2.png" id="11_qidb7"]
 [ext_resource type="Texture2D" uid="uid://ck6cx6irikikc" path="res://Art/Characters/Pencil/Walk/铅笔移动7.png" id="11_ulo2v"]
 [ext_resource type="Script" uid="uid://bherxb068feyy" path="res://Scenes/Scripts/InputController.cs" id="23_i2e8t"]
+[ext_resource type="Texture2D" uid="uid://261qkof7j5dk" path="res://Art/UI/Classic_Heart.png" id="29_kih0c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m0x7a"]
 animations = [{
@@ -184,3 +185,21 @@ shape = SubResource("RectangleShape2D_utwlt")
 
 [node name="FighterController" type="Node" parent="."]
 script = ExtResource("23_i2e8t")
+
+[node name="Hearts" type="Node2D" parent="."]
+position = Vector2(0, -80)
+
+[node name="Heart1" type="Sprite2D" parent="Hearts"]
+position = Vector2(-60, 0)
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("29_kih0c")
+
+[node name="Heart2" type="Sprite2D" parent="Hearts"]
+position = Vector2(-20, 0)
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("29_kih0c")
+
+[node name="Heart3" type="Sprite2D" parent="Hearts"]
+position = Vector2(20, 0)
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("29_kih0c")

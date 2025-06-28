@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://biow52p2g7may"]
+[gd_scene load_steps=8 format=3 uid="uid://bdxhlkopec1sx"]
 
 [ext_resource type="PackedScene" uid="uid://w21kp5u8ddoa" path="res://Scenes/Player.tscn" id="1_b5ayd"]
 [ext_resource type="Texture2D" uid="uid://d4l28ulu1g30" path="res://Art/testZiYuan/eab1672be246760c14bf964580c61235.png" id="2_5lt6y"]
@@ -16,14 +16,18 @@ region = Rect2(308, 54, 56, 4)
 
 [node name="TestScene" type="Node2D"]
 
-[node name="PlayerB" parent="." instance=ExtResource("1_b5ayd")]
+[node name="PlayerB" parent="." node_paths=PackedStringArray("HealthBar", "EnergyBar") instance=ExtResource("1_b5ayd")]
 position = Vector2(1439, 0)
+HealthBar = NodePath("../healthyB")
+EnergyBar = NodePath("../energyB")
 
 [node name="FighterController" parent="PlayerB" index="3"]
 InputPrefix = "playerB_"
 
-[node name="PlayerA" parent="." instance=ExtResource("1_b5ayd")]
+[node name="PlayerA" parent="." node_paths=PackedStringArray("HealthBar", "EnergyBar") instance=ExtResource("1_b5ayd")]
 position = Vector2(436, 0)
+HealthBar = NodePath("../healthyA")
+EnergyBar = NodePath("../energyA")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerA"]
 offset_left = -236.0
