@@ -13,47 +13,33 @@ public partial class Player : Area2D
     [Export] public int Lives = 3;
     [Export] public float AttackOffsetX = 250f;
     [Export] public float BodyOffsetX = 30f;
-    [Export] public TextureProgressBar HealthBar;
-    [Export] public TextureProgressBar EnergyBar;
-    [Export] public float MinX = 100f;
-    [Export] public float MaxX = 1800f;
 
 
+
+    
     public int currentHealth;
 
     public Vector2 Velocity = Vector2.Zero;
     public bool IsJumping = false;
 
-    public static bool IsAnyUlting = false;
-
-    private int energy = 0;
-    private const int MaxEnergy = 100;
-
-    private Sprite2D heart1;
-    private Sprite2D heart2;
-    private Sprite2D heart3;
-
-    private Node2D hearts;
-    private Vector2 heartsInitialPosition;
-
-
     private Area2D bodyArea;
     private CollisionShape2D bodyShape;
+
     private Area2D attackArea;
     private CollisionShape2D attackShape;
     private FighterController controller;
 
     private bool isAttacking = false;
     private bool isHeavyAttacking = false;
-    public bool isDodging = false;
+    private bool isDodging = false;
     private bool isUlting = false;
     private bool isHit = false;
 
-    private Player ultTarget;
-    private int ultProjectilesArrived = 0;
-    private int totalUltProjectiles = 10;
     public override void _Ready()
     {
+        CollisionLayer = 1; // 玩家在第1层
+        CollisionMask = 2;  // 检测第2层（道具层）
+        
         bodyArea = GetNode<Area2D>("CollisionBody");
         bodyShape = bodyArea.GetNode<CollisionShape2D>("CollisionShape2D");
         attackArea = GetNode<Area2D>("AttackArea");
@@ -71,25 +57,22 @@ public partial class Player : Area2D
         anim.AnimationFinished += OnAnimationFinished;
 
         currentHealth = MaxHealth;
-
-        if (EnergyBar != null)
-            EnergyBar.Value = energy;
-
-        heart1 = GetNode<Sprite2D>("Hearts/Heart1");
-        heart2 = GetNode<Sprite2D>("Hearts/Heart2");
-        heart3 = GetNode<Sprite2D>("Hearts/Heart3");
-
-        UpdateHearts();
-
-        hearts = GetNode<Node2D>("Hearts");
-        heartsInitialPosition = hearts.Position;
+        AddToGroup("player");
+        
     }
 
+    
+    public void Heal(int amount)
+    {
+        // 确保不会超过最大生命值
+        currentHealth = Mathf.Min(currentHealth + amount, MaxHealth);
+        GD.Print($"恢复 {amount} 点生命值! 当前生命: {currentHealth}");
+
+    }
     public override void _Process(double delta)
     {
         UpdateAttackAreaPosition();
         UpdateBodyPosition();
-        UpdateHeartsPosition();
 
         float deltaF = (float)delta;
 
@@ -97,12 +80,6 @@ public partial class Player : Area2D
 
         Velocity.Y += (Velocity.Y > 0 ? GravityForce * FallMultiplier : GravityForce) * deltaF;
         Position += Velocity * deltaF;
-
-        // 限制 X 在边界内
-        Position = new Vector2(
-            Mathf.Clamp(Position.X, MinX, MaxX),
-            Position.Y
-        );
 
         if (Position.Y >= GroundY)
         {
@@ -128,10 +105,6 @@ public partial class Player : Area2D
         else if (IsJumping)
         {
             anim.Animation = "Jump";
-        }
-        else if (isUlting)
-        {
-            anim.Animation = "AbilityAttack";
         }
         else if (Mathf.Abs(Velocity.X) > 0.1f)
         {
@@ -180,19 +153,6 @@ public partial class Player : Area2D
         bodyArea.Position = pos;
     }
 
-    private void UpdateHeartsPosition()
-    {
-        var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        bool facingLeft = sprite.FlipH;
-
-        Vector2 pos = heartsInitialPosition;
-        if (facingLeft)
-        {
-            pos.X += 30f; // 向右移动 100
-        }
-        hearts.Position = pos;
-    }
-
 
     public void Attack()
     {
@@ -209,7 +169,7 @@ public partial class Player : Area2D
         anim.Animation = "Attack";
         anim.Play();
     }
-
+    
     private void OnAttackHit(Area2D area)
     {
         if (area == attackArea) return;
@@ -220,7 +180,6 @@ public partial class Player : Area2D
         {
             GD.Print($"{Name} 命中 {target.Name}");
             target.TakeDamage(80);
-            GainEnergy(10);
         }
     }
 
@@ -229,14 +188,7 @@ public partial class Player : Area2D
         if (isDodging || isHit) return;
 
         currentHealth -= amount;
-        currentHealth = Mathf.Max(currentHealth, 0);
-
         GD.Print($"{Name} 受到伤害，当前血量：{currentHealth}");
-
-        if (HealthBar != null)
-        {
-            HealthBar.Value = currentHealth;
-        }
 
         if (currentHealth <= 0)
         {
@@ -245,8 +197,6 @@ public partial class Player : Area2D
             {
                 GD.Print($"{Name} 损失一命，复活！");
                 currentHealth = MaxHealth;
-                HealthBar.Value = currentHealth;
-                UpdateHearts();
             }
             else
             {
@@ -287,26 +237,6 @@ public partial class Player : Area2D
         anim.Play();
     }
 
-    public void TriggerUlt()
-    {
-        if (isUlting || isAttacking || isHit || isDodging) return;
-
-        if (energy < MaxEnergy)
-        {
-            GD.Print($"{Name} 能量不足，无法释放终极技能！");
-            return;
-        }
-
-        GD.Print($"{Name} 释放终极技能！");
-        isUlting = true;
-        IsAnyUlting = true;
-
-        // 立即清空能量
-        energy = 0;
-        if (EnergyBar != null)
-            EnergyBar.Value = energy;
-    }
-
     private void OnAnimationFinished()
     {
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -327,81 +257,5 @@ public partial class Player : Area2D
         {
             isHit = false;
         }
-
-        if (isUlting && anim.Animation == "AbilityAttack")
-        {
-            isUlting = false;
-            IsAnyUlting = false;
-            GD.Print($"{Name} Ulting 播放完毕，生成弹幕！");
-            SpawnUltProjectiles();
-        }
     }
-
-    private void SpawnUltProjectiles()
-    {
-        var scene = GD.Load<PackedScene>("res://Scenes/PencilHead.tscn");
-        var root = GetTree().CurrentScene;
-
-        // 找到目标玩家
-        ultTarget = null;
-        foreach (var child in root.GetChildren())
-        {
-            if (child is Player p && p != this)
-            {
-                ultTarget = p;
-                break;
-            }
-        }
-
-        if (ultTarget == null) return;
-
-        for (int i = 0; i < totalUltProjectiles; i++)
-        {
-            var bullet = scene.Instantiate() as PencilHead;
-            bullet.Position = this.Position + new Vector2(0, -i * 20);
-            bullet.Target = new Vector2(ultTarget.Position.X, GroundY);
-            bullet.TargetPlayer = ultTarget;
-            bullet.UltOwner = this;
-            bullet.IsLast = (i == totalUltProjectiles - 1);
-            GetParent().AddChild(bullet);
-        }
-    }
-
-    public void NotifyUltFinalHit()
-    {
-        if (ultTarget == null) return;
-
-        if (ultTarget.IsJumping)
-        {
-            GD.Print($"{ultTarget.Name} 跳跃中，免疫大招！");
-        }
-        else if (ultTarget.isDodging)
-        {
-            ultTarget.TakeDamage(200);
-        }
-        else
-        {
-            ultTarget.TakeDamage(400);
-        }
-    }
-
-    private void GainEnergy(int amount)
-    {
-        if (energy >= MaxEnergy) return;
-
-        energy += amount;
-        energy = Mathf.Min(energy, MaxEnergy);
-
-        if (EnergyBar != null)
-            EnergyBar.Value = energy;
-    }
-    
-    private void UpdateHearts()
-    {
-        heart1.Visible = Lives >= 1;
-        heart2.Visible = Lives >= 2;
-        heart3.Visible = Lives >= 3;
-    }
-
-
 }
