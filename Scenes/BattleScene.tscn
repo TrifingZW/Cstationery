@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwtpq7nc6brki"]
+[gd_scene load_steps=11 format=3 uid="uid://cwtpq7nc6brki"]
 
 [ext_resource type="Script" uid="uid://bdxmua53hhrlr" path="res://Scenes/Scripts/BattleSceneSpawner.cs" id="1_8uoga"]
 [ext_resource type="Texture2D" uid="uid://d4l28ulu1g30" path="res://Art/testZiYuan/eab1672be246760c14bf964580c61235.png" id="3_kwfy1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxp5vsc5cqcxx" path="res://Art/UI/UI.png" id="5_1yevk"]
 [ext_resource type="Texture2D" uid="uid://dyy71g47nbx8q" path="res://Art/UI/PENCIL.png" id="6_0avxp"]
 [ext_resource type="Texture2D" uid="uid://ck0v8174j16xc" path="res://Art/Characters/Eraser/eraserpfp.png" id="7_x5p3t"]
+[ext_resource type="AudioStream" uid="uid://dda53lw5rh315" path="res://音效/背景/bj- 战斗.wav" id="8_47u5s"]
 [ext_resource type="PackedScene" uid="uid://cd5r40cofm8wf" path="res://daoju/xuebao/health_pickup.tscn" id="8_cja1x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0f5h7"]
@@ -113,3 +114,7 @@ flip_h = true
 
 [node name="Area2D" parent="." instance=ExtResource("8_cja1x")]
 position = Vector2(878, 805)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_47u5s")
+autoplay = true
