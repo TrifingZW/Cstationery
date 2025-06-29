@@ -61,6 +61,10 @@ public partial class EraserPlayer : Player
         {
             anim.Animation = "Jump";
         }
+        else if (isDying)
+        {
+            anim.Animation = "AbilityAttack";
+        }
         else if (Mathf.Abs(Velocity.X) > 0.1f)
         {
             anim.Animation = "Walk";

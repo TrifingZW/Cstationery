@@ -48,6 +48,7 @@ public partial class Player : Area2D
     protected bool isDodging = false;
     protected bool isUlting = false;
     protected bool isHit = false;
+    protected bool isDying = false;
 
     private Player ultTarget;
     private int ultProjectilesArrived = 0;
@@ -130,6 +131,10 @@ public partial class Player : Area2D
             anim.Animation = "Jump";
         }
         else if (isUlting)
+        {
+            anim.Animation = "AbilityAttack";
+        }
+        else if (isDying)
         {
             anim.Animation = "AbilityAttack";
         }
@@ -237,20 +242,11 @@ public partial class Player : Area2D
 
         if (currentHealth <= 0)
         {
-            Lives--;
-            if (Lives > 0)
+            if (!isDying)
             {
-                GD.Print($"{Name} 损失一命，复活！");
-                currentHealth = MaxHealth;
-                HealthBar.Value = currentHealth;
-                UpdateHearts();
+                isDying = true;
             }
-            else
-            {
-                GD.Print($"{Name} 游戏结束！");
-                QueueFree();
-                return;
-            }
+            return;
         }
 
         GotHit();
@@ -323,6 +319,28 @@ public partial class Player : Area2D
             IsAnyUlting = false;
             GD.Print($"{Name} Ulting 播放完毕，生成弹幕！");
             SpawnUltProjectiles();
+        }
+
+        if (isDying && anim.Animation == "Dead")
+        {
+            isDying = false;
+
+            Lives--;
+            if (Lives > 0)
+            {
+                GD.Print($"{Name} 损失一命，复活！");
+                currentHealth = MaxHealth;
+                HealthBar.Value = currentHealth;
+                UpdateHearts();
+            }
+            else
+            {
+                GD.Print($"{Name} 游戏结束！");
+                controller.SetInputEnabled(false);
+                //通知game manager死啦
+                //GetTree().CallGroup("GameManager", "OnPlayerDeath", this);
+                return;
+            }
         }
     }
 
