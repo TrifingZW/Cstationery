@@ -1,78 +1,80 @@
-[gd_scene load_steps=33 format=3 uid="uid://b583kclmqr4p3"]
+[gd_scene load_steps=36 format=3 uid="uid://b583kclmqr4p3"]
 
-[ext_resource type="Script" uid="uid://clf147quohe4c" path="res://Scenes/Scripts/Player.cs" id="1_hma8l"]
-[ext_resource type="Texture2D" uid="uid://bji0xgthjm2in" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能1.png" id="2_eg2xn"]
-[ext_resource type="Texture2D" uid="uid://wxcuiwgwn4nl" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能2.png" id="3_up8i0"]
-[ext_resource type="Texture2D" uid="uid://ls10xuldwclv" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能3.png" id="4_ydm6i"]
-[ext_resource type="Texture2D" uid="uid://dm8y0mvhnd31j" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能4.png" id="5_1xaux"]
-[ext_resource type="Texture2D" uid="uid://dq8tkh2r6qpxj" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能5.png" id="6_kh4rl"]
-[ext_resource type="Texture2D" uid="uid://bmbic84ls1hlh" path="res://Art/Characters/Pencil/Attack/铅笔攻击1.png" id="7_io3dy"]
-[ext_resource type="Texture2D" uid="uid://bycnp0h4cjwqw" path="res://Art/Characters/Pencil/Attack/铅笔攻击2.png" id="8_gvo40"]
-[ext_resource type="Texture2D" uid="uid://b1pnsrhv2kcvx" path="res://Art/Characters/Pencil/Attack/铅笔攻击3.png" id="9_dir6m"]
-[ext_resource type="Texture2D" uid="uid://cqnvr0dy5ak1x" path="res://Art/Characters/Pencil/Attack/铅笔攻击4.png" id="10_trj2t"]
-[ext_resource type="Texture2D" uid="uid://bopqdu4ipve8i" path="res://Art/Characters/Pencil/Attack/铅笔攻击5.png" id="11_sk7uc"]
-[ext_resource type="Texture2D" uid="uid://bl1yf6ojmg20l" path="res://Art/Characters/Pencil/Attack/铅笔攻击6.png" id="12_cef85"]
-[ext_resource type="Texture2D" uid="uid://cx5hykukdhj55" path="res://Art/Characters/Pencil/Attack/铅笔攻击7.png" id="13_mexql"]
-[ext_resource type="Texture2D" uid="uid://drpgef8asaoiy" path="res://Art/Characters/Pencil/Avoid/铅笔躲避1.png" id="14_drkcs"]
-[ext_resource type="Texture2D" uid="uid://g8bcsxk7228h" path="res://Art/Characters/Pencil/Avoid/铅笔躲避2.png" id="15_d5rp7"]
-[ext_resource type="Texture2D" uid="uid://sys2ypudcjhf" path="res://Art/Characters/Pencil/Idle/铅笔待机1.png" id="16_xfrqt"]
-[ext_resource type="Texture2D" uid="uid://c0q0tby7hjtme" path="res://Art/Characters/Pencil/GotHit/铅笔受击.png" id="17_6mqbi"]
-[ext_resource type="Texture2D" uid="uid://bwvvje56q6o05" path="res://Art/Characters/Pencil/Idle/铅笔待机2.png" id="18_iukh4"]
-[ext_resource type="Texture2D" uid="uid://b602ge8ycldhv" path="res://Art/Characters/Pencil/Idle/铅笔待机3.png" id="19_t58y6"]
-[ext_resource type="Texture2D" uid="uid://ddcd3e0ki2keq" path="res://Art/Characters/Pencil/Jump/铅笔跳跃1.png" id="20_4pr8g"]
-[ext_resource type="Texture2D" uid="uid://dhhrnba8alwik" path="res://Art/Characters/Pencil/Jump/铅笔跳跃3.png" id="21_ep1f4"]
-[ext_resource type="Texture2D" uid="uid://dh5x6yvs0ne7i" path="res://Art/Characters/Pencil/Walk/铅笔移动1.png" id="22_kd5dg"]
-[ext_resource type="Texture2D" uid="uid://bbjfc7mafsuov" path="res://Art/Characters/Pencil/Walk/铅笔移动2.png" id="23_2yk6p"]
-[ext_resource type="Texture2D" uid="uid://cbibvlt8m22fw" path="res://Art/Characters/Pencil/Walk/铅笔移动3.png" id="24_e4jx6"]
-[ext_resource type="Texture2D" uid="uid://yna6sdyllsf7" path="res://Art/Characters/Pencil/Walk/铅笔移动5.png" id="25_57tfa"]
-[ext_resource type="Texture2D" uid="uid://b2miacmk0041p" path="res://Art/Characters/Pencil/Walk/铅笔移动6.png" id="26_f3gwr"]
-[ext_resource type="Texture2D" uid="uid://ck6cx6irikikc" path="res://Art/Characters/Pencil/Walk/铅笔移动7.png" id="27_cbes5"]
+[ext_resource type="Script" uid="uid://c6i5voryo44k3" path="res://Scenes/Scripts/EraserPlayer.cs" id="1_0vpjh"]
+[ext_resource type="Texture2D" uid="uid://dwof4sxga55e5" path="res://Art/Characters/Eraser/Ulting/擦子大招1.png" id="2_0vpjh"]
+[ext_resource type="Texture2D" uid="uid://dirdecfgwdrp2" path="res://Art/Characters/Eraser/Attack/擦子攻击1.png" id="2_logyw"]
+[ext_resource type="Texture2D" uid="uid://cbq6aqjict8rh" path="res://Art/Characters/Eraser/Ulting/擦子大招2.png" id="3_am1ee"]
+[ext_resource type="Texture2D" uid="uid://di84gr8amaixs" path="res://Art/Characters/Eraser/Attack/擦子攻击2.png" id="3_hqcry"]
+[ext_resource type="Texture2D" uid="uid://dv0j8jud1ri6h" path="res://Art/Characters/Eraser/Attack/擦子攻击3.png" id="4_ev25g"]
+[ext_resource type="Texture2D" uid="uid://dbw2nsoml5i6p" path="res://Art/Characters/Eraser/Ulting/擦子大招3.png" id="4_q8bw7"]
+[ext_resource type="Texture2D" uid="uid://b8il2jf2i8c7x" path="res://Art/Characters/Eraser/Attack/擦子攻击4.png" id="5_4hptu"]
+[ext_resource type="Texture2D" uid="uid://t8ln2owyupo8" path="res://Art/Characters/Eraser/Ulting/擦子大招4.png" id="5_jnxb3"]
+[ext_resource type="Texture2D" uid="uid://b7k8apw7wfkgl" path="res://Art/Characters/Eraser/Attack/擦子攻击5.png" id="6_0vpjh"]
+[ext_resource type="Texture2D" uid="uid://dsvkgo6fhc4ad" path="res://Art/Characters/Eraser/Attack/擦子攻击6.png" id="7_am1ee"]
+[ext_resource type="Texture2D" uid="uid://ctrtc6gpci65" path="res://Art/Characters/Eraser/Attack/擦子攻击7.png" id="8_q8bw7"]
+[ext_resource type="Texture2D" uid="uid://dpfuh7les73rr" path="res://Art/Characters/Eraser/Dodge/擦子躲避1.png" id="9_jnxb3"]
+[ext_resource type="Texture2D" uid="uid://ovdxy4s7qxx8" path="res://Art/Characters/Eraser/Dodge/擦子躲避2.png" id="10_wwrx3"]
+[ext_resource type="Texture2D" uid="uid://b21m0q6p5ufdk" path="res://Art/Characters/Eraser/GotHit/擦子受击.png" id="12_hhnr7"]
+[ext_resource type="Texture2D" uid="uid://dvotiumsgrxtt" path="res://Art/Characters/Eraser/Dead/擦子死亡1.png" id="13_q8bw7"]
+[ext_resource type="Texture2D" uid="uid://coswm11mkpkja" path="res://Art/Characters/Eraser/Dead/擦子死亡2.png" id="14_jnxb3"]
+[ext_resource type="Texture2D" uid="uid://de36ub40bwl45" path="res://Art/Characters/Eraser/Jump/擦子跳跃1.png" id="15_ohhqv"]
+[ext_resource type="Texture2D" uid="uid://cvej64bqjdkov" path="res://Art/Characters/Eraser/Jump/擦子跳跃2.png" id="16_ihlth"]
+[ext_resource type="Texture2D" uid="uid://dy73sf83ka3fg" path="res://Art/Characters/Eraser/Jump/擦子跳跃3.png" id="17_4c5p5"]
+[ext_resource type="Texture2D" uid="uid://5rgs5vcqptnr" path="res://Art/Characters/Eraser/Idle/擦子待机1.png" id="18_am1ee"]
+[ext_resource type="Texture2D" uid="uid://c6vuotpxdayqf" path="res://Art/Characters/Eraser/Idle/擦子待机2.png" id="19_q8bw7"]
+[ext_resource type="Texture2D" uid="uid://bx0vv5p74v1nc" path="res://Art/Characters/Eraser/Idle/擦子待机3.png" id="20_jnxb3"]
+[ext_resource type="Texture2D" uid="uid://bfw8sr1m01078" path="res://Art/Characters/Eraser/Walk/擦子移动1.png" id="23_wwrx3"]
+[ext_resource type="Texture2D" uid="uid://beixkmbevomoo" path="res://Art/Characters/Eraser/Walk/擦子移动2.png" id="24_hhnr7"]
+[ext_resource type="Texture2D" uid="uid://c3aqoy4lbxk6x" path="res://Art/Characters/Eraser/Walk/擦子移动3.png" id="25_ohhqv"]
+[ext_resource type="Texture2D" uid="uid://cx27xxq7cf57e" path="res://Art/Characters/Eraser/Walk/擦子移动4.png" id="26_ihlth"]
+[ext_resource type="Texture2D" uid="uid://dcbnjav05e1oh" path="res://Art/Characters/Eraser/Walk/擦子移动5.png" id="27_4c5p5"]
+[ext_resource type="Texture2D" uid="uid://ccykn24doflq" path="res://Art/Characters/Eraser/Walk/擦子移动6.png" id="28_fefgn"]
 [ext_resource type="Script" uid="uid://bherxb068feyy" path="res://Scenes/Scripts/InputController.cs" id="28_qxy0y"]
 [ext_resource type="Texture2D" uid="uid://261qkof7j5dk" path="res://Art/UI/Classic_Heart.png" id="29_f2piu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwrx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0vpjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_am1ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q8bw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jnxb3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m0x7a"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_eg2xn")
+"texture": ExtResource("2_logyw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_up8i0")
+"texture": ExtResource("3_hqcry")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ydm6i")
+"texture": ExtResource("4_ev25g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_1xaux")
+"texture": ExtResource("5_4hptu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_kh4rl")
-}],
-"loop": false,
-"name": &"AbilityAttack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_io3dy")
+"texture": ExtResource("6_0vpjh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_gvo40")
+"texture": ExtResource("7_am1ee")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_dir6m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_trj2t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_sk7uc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_cef85")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_mexql")
+"texture": ExtResource("8_q8bw7")
 }],
 "loop": false,
 "name": &"Attack",
@@ -80,10 +82,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_drkcs")
+"texture": ExtResource("13_q8bw7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_d5rp7")
+"texture": ExtResource("14_jnxb3")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_jnxb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wwrx3")
 }],
 "loop": false,
 "name": &"Dodge",
@@ -91,10 +104,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_xfrqt")
+"texture": ExtResource("18_am1ee")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_6mqbi")
+"texture": ExtResource("12_hhnr7")
 }],
 "loop": false,
 "name": &"GotHit",
@@ -102,13 +115,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_xfrqt")
+"texture": ExtResource("18_am1ee")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_iukh4")
+"texture": ExtResource("19_q8bw7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_t58y6")
+"texture": ExtResource("20_jnxb3")
 }],
 "loop": true,
 "name": &"Idle",
@@ -116,10 +129,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_4pr8g")
+"texture": ExtResource("15_ohhqv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_ep1f4")
+"texture": ExtResource("16_ihlth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4c5p5")
 }],
 "loop": false,
 "name": &"Jump",
@@ -127,22 +143,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 0.5,
-"texture": ExtResource("22_kd5dg")
+"texture": ExtResource("23_wwrx3")
 }, {
 "duration": 0.5,
-"texture": ExtResource("23_2yk6p")
+"texture": ExtResource("24_hhnr7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("25_ohhqv")
 }, {
 "duration": 0.7,
-"texture": ExtResource("24_e4jx6")
+"texture": ExtResource("26_ihlth")
 }, {
 "duration": 0.5,
-"texture": ExtResource("25_57tfa")
+"texture": ExtResource("27_4c5p5")
 }, {
 "duration": 0.5,
-"texture": ExtResource("26_f3gwr")
-}, {
-"duration": 0.7,
-"texture": ExtResource("27_cbes5")
+"texture": ExtResource("28_fefgn")
 }],
 "loop": true,
 "name": &"Walk",
@@ -154,18 +170,25 @@ radius = 45.0
 height = 176.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utwlt"]
-size = Vector2(175, 228)
+size = Vector2(247, 108)
 
 [node name="Player" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_hma8l")
-JumpForce = 1100
+script = ExtResource("1_0vpjh")
 metadata/_edit_group_ = true
+
+[node name="Ulting" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(20, 30)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wwrx3")
+frame = 1
+frame_progress = 0.874997
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_m0x7a")
-animation = &"AbilityAttack"
+animation = &"Attack"
 metadata/_edit_group_ = true
 
 [node name="CollisionBody" type="Area2D" parent="."]
@@ -180,7 +203,7 @@ collision_layer = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(117.5, 2)
+position = Vector2(158.5, -8)
 shape = SubResource("RectangleShape2D_utwlt")
 
 [node name="FighterController" type="Node" parent="."]

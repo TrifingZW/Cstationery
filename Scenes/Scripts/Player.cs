@@ -26,28 +26,28 @@ public partial class Player : Area2D
 
     public static bool IsAnyUlting = false;
 
-    private int energy = 0;
-    private const int MaxEnergy = 100;
+    protected int energy = 0;
+    public const int MaxEnergy = 100;
 
-    private Sprite2D heart1;
-    private Sprite2D heart2;
-    private Sprite2D heart3;
+    protected Sprite2D heart1;
+    protected Sprite2D heart2;
+    protected Sprite2D heart3;
 
-    private Node2D hearts;
-    private Vector2 heartsInitialPosition;
+    protected Node2D hearts;
+    protected Vector2 heartsInitialPosition;
 
 
-    private Area2D bodyArea;
-    private CollisionShape2D bodyShape;
-    private Area2D attackArea;
-    private CollisionShape2D attackShape;
-    private FighterController controller;
+    protected Area2D bodyArea;
+    protected CollisionShape2D bodyShape;
+    protected Area2D attackArea;
+    protected CollisionShape2D attackShape;
+    protected FighterController controller;
 
-    private bool isAttacking = false;
-    private bool isHeavyAttacking = false;
-    public bool isDodging = false;
-    private bool isUlting = false;
-    private bool isHit = false;
+    protected bool isAttacking = false;
+    protected bool isHeavyAttacking = false;
+    protected bool isDodging = false;
+    protected bool isUlting = false;
+    protected bool isHit = false;
 
     private Player ultTarget;
     private int ultProjectilesArrived = 0;
@@ -160,7 +160,7 @@ public partial class Player : Area2D
         }
     }
 
-    private void UpdateAttackAreaPosition()
+    protected virtual void UpdateAttackAreaPosition()
     {
         var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         bool facingLeft = sprite.FlipH;
@@ -170,7 +170,7 @@ public partial class Player : Area2D
         attackArea.Position = pos;
     }
 
-    private void UpdateBodyPosition()
+    protected virtual void UpdateBodyPosition()
     {
         var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         bool facingLeft = sprite.FlipH;
@@ -180,7 +180,7 @@ public partial class Player : Area2D
         bodyArea.Position = pos;
     }
 
-    private void UpdateHeartsPosition()
+    protected virtual void UpdateHeartsPosition()
     {
         var sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         bool facingLeft = sprite.FlipH;
@@ -204,10 +204,6 @@ public partial class Player : Area2D
 
         attackArea.Monitoring = true;
         attackShape.Disabled = false;
-
-        var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        anim.Animation = "Attack";
-        anim.Play();
     }
 
     private void OnAttackHit(Area2D area)
@@ -216,15 +212,16 @@ public partial class Player : Area2D
 
         GD.Print($"{Name} 检测命中：{area.Name}");
 
-        if (area.Owner is Player target && target != this)
+        if (area.Owner is Area2D other && other != this && other.HasMethod("TakeDamage"))
         {
-            GD.Print($"{Name} 命中 {target.Name}");
-            target.TakeDamage(80);
+            GD.Print($"{Name} 命中 {other.Name}");
+            other.Call("TakeDamage", 80);
             GainEnergy(10);
         }
+
     }
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
         if (isDodging || isHit) return;
 
@@ -265,10 +262,6 @@ public partial class Player : Area2D
 
         GD.Print($"{Name} 被击中！");
         isHit = true;
-
-        var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        anim.Animation = "GotHit";
-        anim.Play();
     }
 
     public void Dodge()
@@ -281,13 +274,9 @@ public partial class Player : Area2D
         float dodgeDistance = 100f;
         float direction = GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH ? 1f : -1f;
         Position += new Vector2(dodgeDistance * direction, 0);
-
-        var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        anim.Animation = "Dodge";
-        anim.Play();
     }
 
-    public void TriggerUlt()
+    public virtual void TriggerUlt()
     {
         if (isUlting || isAttacking || isHit || isDodging) return;
 
