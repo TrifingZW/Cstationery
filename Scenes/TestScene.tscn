@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdxhlkopec1sx"]
+[gd_scene load_steps=11 format=3 uid="uid://bdxhlkopec1sx"]
 
 [ext_resource type="PackedScene" uid="uid://w21kp5u8ddoa" path="res://Scenes/GameObject/Player.tscn" id="1_b5ayd"]
 [ext_resource type="Texture2D" uid="uid://d4l28ulu1g30" path="res://Art/testZiYuan/eab1672be246760c14bf964580c61235.png" id="2_5lt6y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cxp5vsc5cqcxx" path="res://Art/UI/UI.png" id="3_iufkg"]
 [ext_resource type="Texture2D" uid="uid://dyy71g47nbx8q" path="res://Art/UI/PENCIL.png" id="5_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://cd5r40cofm8wf" path="res://daoju/xuebao/health_pickup.tscn" id="6_qsjrb"]
+[ext_resource type="Texture2D" uid="uid://ck0v8174j16xc" path="res://Art/Characters/Eraser/eraserpfp.png" id="7_6xh1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0f5h7"]
 atlas = ExtResource("3_8k7wh")
@@ -97,7 +98,7 @@ position = Vector2(263, 96)
 scale = Vector2(0.260958, -0.215513)
 texture = ExtResource("3_iufkg")
 
-[node name="TextureA" type="TextureRect" parent="."]
+[node name="PlayerA_PencilPfP" type="TextureRect" parent="."]
 offset_left = 69.0
 offset_top = -20.0
 offset_right = 369.0
@@ -105,7 +106,15 @@ offset_bottom = 280.0
 scale = Vector2(0.675583, 0.586371)
 texture = ExtResource("5_0f5h7")
 
-[node name="TextureB" type="TextureRect" parent="."]
+[node name="PlayerA_EraserPfP" type="TextureRect" parent="."]
+offset_left = 63.0
+offset_top = -4.0
+offset_right = 363.0
+offset_bottom = 296.0
+scale = Vector2(0.675583, 0.586371)
+texture = ExtResource("7_6xh1p")
+
+[node name="PlayerB_PencilPfP" type="TextureRect" parent="."]
 offset_left = 1641.0
 offset_top = -20.0
 offset_right = 1941.0
@@ -113,6 +122,16 @@ offset_bottom = 280.0
 rotation = -6.28318
 scale = Vector2(0.675583, 0.586371)
 texture = ExtResource("5_0f5h7")
+flip_h = true
+
+[node name="PlayerB_EraserPfP" type="TextureRect" parent="."]
+offset_left = 1643.0
+offset_top = -6.0
+offset_right = 1943.0
+offset_bottom = 294.0
+rotation = -6.28318
+scale = Vector2(0.675583, 0.586371)
+texture = ExtResource("7_6xh1p")
 flip_h = true
 
 [node name="Area2D" parent="." instance=ExtResource("6_qsjrb")]
