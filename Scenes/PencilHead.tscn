@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://icvejj5qwxio"]
+[gd_scene load_steps=3 format=3 uid="uid://de2d78fd5f7w5"]
 
 [ext_resource type="Script" uid="uid://dnv81n8hfnjg6" path="res://Scenes/PencilHead.cs" id="1_gm28s"]
 [ext_resource type="Texture2D" uid="uid://bgg3nn5y8a6vq" path="res://Art/Characters/Pencil/PencilHead/pencilHead.png" id="2_penrn"]
