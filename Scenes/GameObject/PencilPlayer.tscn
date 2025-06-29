@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://3mqpikun0gev"]
+[gd_scene load_steps=40 format=3 uid="uid://3mqpikun0gev"]
 
 [ext_resource type="Script" uid="uid://clf147quohe4c" path="res://Scenes/Scripts/Player.cs" id="1_2sicv"]
 [ext_resource type="Texture2D" uid="uid://bji0xgthjm2in" path="res://Art/Characters/Pencil/AbilityAttack/铅笔技能1.png" id="2_hc5fv"]
@@ -31,6 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://b2miacmk0041p" path="res://Art/Characters/Pencil/Walk/铅笔移动6.png" id="26_dge60"]
 [ext_resource type="Script" uid="uid://bherxb068feyy" path="res://Scenes/Scripts/InputController.cs" id="28_o81om"]
 [ext_resource type="Texture2D" uid="uid://261qkof7j5dk" path="res://Art/UI/Classic_Heart.png" id="29_erllb"]
+[ext_resource type="AudioStream" uid="uid://dnjxb1vuaagnv" path="res://音效/人物/人物-铅笔-打（打到.wav" id="32_ik16m"]
+[ext_resource type="AudioStream" uid="uid://ewdo1ehg1qn3" path="res://音效/人物/人物-铅笔-挥.wav" id="33_revu0"]
+[ext_resource type="AudioStream" uid="uid://dg0mb5l4ny6b1" path="res://音效/人物/人物-铅笔-受攻击1.wav" id="34_m7e87"]
+[ext_resource type="AudioStream" uid="uid://0ejxr8miwf7d" path="res://音效/人物/人物-铅笔-大招.wav" id="35_e5pw6"]
+[ext_resource type="AudioStream" uid="uid://bkk5y85ant38x" path="res://音效/人物/人物-铅笔-跳（过程.wav" id="36_ylv0y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m0x7a"]
 animations = [{
@@ -224,3 +229,20 @@ texture = ExtResource("29_erllb")
 position = Vector2(20, 0)
 scale = Vector2(0.005, 0.005)
 texture = ExtResource("29_erllb")
+
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AttackSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_ik16m")
+
+[node name="DodgeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_revu0")
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_m7e87")
+
+[node name="UltSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_e5pw6")
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_ylv0y")

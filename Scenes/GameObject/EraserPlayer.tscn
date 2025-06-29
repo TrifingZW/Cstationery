@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b583kclmqr4p3"]
+[gd_scene load_steps=41 format=3 uid="uid://b583kclmqr4p3"]
 
 [ext_resource type="Script" uid="uid://c6i5voryo44k3" path="res://Scenes/Scripts/EraserPlayer.cs" id="1_0vpjh"]
 [ext_resource type="Texture2D" uid="uid://dwof4sxga55e5" path="res://Art/Characters/Eraser/Ulting/擦子大招1.png" id="2_0vpjh"]
@@ -31,6 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://ccykn24doflq" path="res://Art/Characters/Eraser/Walk/擦子移动6.png" id="28_fefgn"]
 [ext_resource type="Script" uid="uid://bherxb068feyy" path="res://Scenes/Scripts/InputController.cs" id="28_qxy0y"]
 [ext_resource type="Texture2D" uid="uid://261qkof7j5dk" path="res://Art/UI/Classic_Heart.png" id="29_f2piu"]
+[ext_resource type="AudioStream" uid="uid://i0ij0arnl2o" path="res://音效/人物/人物-橡皮-打（打到.wav" id="32_ihlth"]
+[ext_resource type="AudioStream" uid="uid://bgbp5a3ccvl6q" path="res://音效/人物/人物-橡皮-挥.wav" id="33_4c5p5"]
+[ext_resource type="AudioStream" uid="uid://dig5gnsq3d6il" path="res://音效/人物/人物-橡皮-受攻击1.wav" id="34_fefgn"]
+[ext_resource type="AudioStream" uid="uid://dtwe8speopf7f" path="res://音效/人物/人物-橡皮-大招.wav" id="35_mece3"]
+[ext_resource type="AudioStream" uid="uid://b3pdorpijv4x7" path="res://音效/人物/人物-橡皮-跳1（过程.wav" id="36_rak8l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wwrx3"]
 animations = [{
@@ -234,3 +239,20 @@ texture = ExtResource("29_f2piu")
 position = Vector2(20, 0)
 scale = Vector2(0.005, 0.005)
 texture = ExtResource("29_f2piu")
+
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AttackSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_ihlth")
+
+[node name="DodgeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_4c5p5")
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_fefgn")
+
+[node name="UltSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_mece3")
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_rak8l")
