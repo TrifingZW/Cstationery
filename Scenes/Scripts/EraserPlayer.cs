@@ -63,7 +63,7 @@ public partial class EraserPlayer : Player
         }
         else if (isDying)
         {
-            anim.Animation = "AbilityAttack";
+            anim.Animation = "Dead";
         }
         else if (Mathf.Abs(Velocity.X) > 0.1f)
         {
@@ -81,18 +81,18 @@ public partial class EraserPlayer : Player
     {
         if (isUlting || isAttacking || isHit || isDodging) return;
 
-        // if (energy < MaxEnergy)
-        // {
-        //     GD.Print($"{Name} 能量不足，无法进入霸体状态！");
-        //     return;
-        // }
+        if (energy < MaxEnergy)
+        {
+            GD.Print($"{Name} 能量不足，无法进入霸体状态！");
+            return;
+        }
 
         GD.Print($"{Name} 进入霸体状态！");
         isUlting = true;
 
-        // energy = 0;
-        // if (EnergyBar != null)
-        //     EnergyBar.Value = energy;
+        energy = 0;
+        if (EnergyBar != null)
+            EnergyBar.Value = energy;
 
         if (ultingEffect != null)
         {

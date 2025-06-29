@@ -373,7 +373,7 @@ public partial class Player : Area2D
 
     private void SpawnUltProjectiles()
     {
-        var scene = GD.Load<PackedScene>("res://Scenes/PencilHead.tscn");
+        var scene = GD.Load<PackedScene>("res://Scenes/GameObject/PencilHead.tscn");
         var root = GetTree().CurrentScene;
 
         // 找到目标玩家
