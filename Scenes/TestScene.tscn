@@ -19,10 +19,8 @@ region = Rect2(308, 54, 56, 4)
 
 [node name="TestScene" type="Node2D"]
 
-[node name="PlayerB" parent="." node_paths=PackedStringArray("HealthBar", "EnergyBar") instance=ExtResource("1_b5ayd")]
+[node name="PlayerB" parent="." instance=ExtResource("1_b5ayd")]
 position = Vector2(1439, 0)
-HealthBar = NodePath("../healthyB")
-EnergyBar = NodePath("../energyB")
 
 [node name="FighterController" parent="PlayerB" index="3"]
 InputPrefix = "playerB_"
@@ -31,10 +29,11 @@ InputPrefix = "playerB_"
 visible = false
 position = Vector2(1465, 0)
 
-[node name="PlayerA" parent="." node_paths=PackedStringArray("HealthBar", "EnergyBar") instance=ExtResource("1_b5ayd")]
+[node name="PlayerA" parent="." instance=ExtResource("1_b5ayd")]
 position = Vector2(436, 0)
-HealthBar = NodePath("../healthyA")
-EnergyBar = NodePath("../energyA")
+
+[node name="CollisionShape2D" parent="PlayerA/AttackArea" index="0"]
+position = Vector2(116.5, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerA"]
 offset_left = -236.0

@@ -1,20 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfilq7nwmqsu5"]
+[gd_scene load_steps=4 format=3 uid="uid://08pvkqsvc4bb"]
 
 [ext_resource type="Script" uid="uid://f1gbvxkk48c4" path="res://Scenes/Scripts/Node2d.cs" id="1_hpc76"]
 [ext_resource type="Texture2D" uid="uid://bhdyop3a23w5" path="res://icon.svg" id="2_tr2i4"]
 [ext_resource type="Script" uid="uid://bxlrjont4ac3k" path="res://Scenes/Scripts/CstationeryCharacter.cs" id="3_nhkr4"]
 
 [node name="MainScene" type="MainScene"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_hpc76")
@@ -22,15 +12,6 @@ script = ExtResource("1_hpc76")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CstationeryCharacter" type="CstationeryCharacter" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 script = ExtResource("3_nhkr4")
 Direction = Vector2(0, 1)
 
@@ -38,15 +19,6 @@ Direction = Vector2(0, 1)
 texture = ExtResource("2_tr2i4")
 
 [node name="CstationeryCharacter2" type="CstationeryCharacter" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 position = Vector2(-228, -127)
 script = ExtResource("3_nhkr4")
 Direction = Vector2(-1, -1)
@@ -55,15 +27,6 @@ Direction = Vector2(-1, -1)
 texture = ExtResource("2_tr2i4")
 
 [node name="CstationeryCharacter4" type="CstationeryCharacter" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 position = Vector2(-2, -157)
 script = ExtResource("3_nhkr4")
 
@@ -71,17 +34,7 @@ script = ExtResource("3_nhkr4")
 texture = ExtResource("2_tr2i4")
 
 [node name="CstationeryCharacter3" type="CstationeryCharacter" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 position = Vector2(-47, -68)
-script = null
 
 [node name="Sprite2D" type="Sprite2D" parent="CstationeryCharacter3"]
 texture = ExtResource("2_tr2i4")
