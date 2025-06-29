@@ -3,6 +3,8 @@ extends Node2D
 @onready var panel: Panel = $Panel
 @onready var panel_2: Panel = $Panel2
 @onready var panel_3: Panel = $Panel3
+@onready var panel_4: Panel = $Panel4
+@onready var panel_5: Panel = $Panel5
 
 func _process(delt) :
 	pass
@@ -12,6 +14,8 @@ func _ready():
 	panel.visible=false
 	panel_2.visible=false
 	panel_3.visible=false
+	panel_4.visible=false
+	panel_5.visible=false
 
 
 func _on_play_button_down() -> void:
@@ -40,15 +44,15 @@ var character_select_scene = preload("res://Select the Character screen/select_t
 
 func _on_twopeople_pressed() -> void:
 	# 确保这行使用制表符缩进
-	var result = get_tree().change_scene_to_packed(character_select_scene)
-	if result != OK:
-		printerr("场景加载失败: ", result)
+	panel_2.visible=false
+	panel_4.visible=true
+
 
 func _on_onepeople_pressed() -> void:
 	# 确保这行使用制表符缩进
-	var result = get_tree().change_scene_to_packed(character_select_scene)
-	if result != OK:
-		printerr("场景加载失败: ", result)
+	panel_2.visible=false
+	panel_4.visible=true
+
 
 func _on_back1_pressed() -> void:
 	panel_2.visible=false
@@ -63,3 +67,13 @@ func _on_play2_pressed() -> void:
 func _on_back_5_pressed() -> void:
 	v_box_container.visible=true
 	panel_3.visible=false
+
+
+func _on_back_2_pressed() -> void:
+	panel_4.visible=false
+	panel_5.visible=true
+
+
+func _on_back_3_pressed() -> void:
+	var result=get_tree().change_scene_to_packed(character_select_scene)
+	

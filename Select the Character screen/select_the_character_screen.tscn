@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxdyuprj68j3u"]
+[gd_scene load_steps=6 format=3 uid="uid://bxdyuprj68j3u"]
 
-[ext_resource type="Texture2D" uid="uid://f2ufgl7bvbwe" path="res://Art/testZiYuan/123.png" id="1_hrnqq"]
+[ext_resource type="Texture2D" uid="uid://v00n635hxqaj" path="res://Art/UI/ERASER.png" id="1_8s6a8"]
 [ext_resource type="Texture2D" uid="uid://cqt2cvsyh5kaw" path="res://Art/testZiYuan/22222.png" id="2_e3ebu"]
+[ext_resource type="Texture2D" uid="uid://dyy71g47nbx8q" path="res://Art/UI/PENCIL.png" id="2_iol6q"]
 [ext_resource type="Texture2D" uid="uid://dcqnwsftxt4cj" path="res://Art/testZiYuan/手2.png" id="3_rdxmy"]
 [ext_resource type="Script" uid="uid://q1l8vuyqut6d" path="res://Select the Character screen/手2.gd" id="4_jcoyh"]
 
@@ -16,35 +17,22 @@ offset_bottom = 561.0
 scale = Vector2(2.16767, 2.18783)
 
 [node name="123" type="Sprite2D" parent="Button"]
-position = Vector2(62, 57)
-scale = Vector2(0.1425, 0.1325)
-texture = ExtResource("1_hrnqq")
+position = Vector2(62.9709, 63.0762)
+scale = Vector2(0.413655, 0.414414)
+texture = ExtResource("1_8s6a8")
 
 [node name="Button2" type="Button" parent="."]
 z_index = 1
-offset_left = 811.0
+offset_left = 833.0
 offset_top = 436.0
-offset_right = 937.0
+offset_right = 959.0
 offset_bottom = 561.0
 scale = Vector2(2.16767, 2.18783)
 
 [node name="123" type="Sprite2D" parent="Button2"]
-position = Vector2(62, 57)
-scale = Vector2(0.1425, 0.1325)
-texture = ExtResource("1_hrnqq")
-
-[node name="Button3" type="Button" parent="."]
-z_index = 1
-offset_left = 1262.0
-offset_top = 436.0
-offset_right = 1388.0
-offset_bottom = 561.0
-scale = Vector2(2.16767, 2.18783)
-
-[node name="123" type="Sprite2D" parent="Button3"]
-position = Vector2(62, 57)
-scale = Vector2(0.1425, 0.1325)
-texture = ExtResource("1_hrnqq")
+position = Vector2(64.1242, 63.5333)
+scale = Vector2(0.412117, 0.402225)
+texture = ExtResource("2_iol6q")
 
 [node name="22222" type="Sprite2D" parent="."]
 position = Vector2(969, 539.5)
