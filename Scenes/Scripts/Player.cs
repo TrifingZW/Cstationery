@@ -19,7 +19,7 @@ public partial class Player : Area2D
     [Export] public float MaxX = 1800f;
 
 
-    private int currentHealth;
+    protected int currentHealth;
 
     public Vector2 Velocity = Vector2.Zero;
     public bool IsJumping = false;
@@ -51,11 +51,24 @@ public partial class Player : Area2D
     public bool isDying = false;
     public bool isDead = false;
 
-    private Player ultTarget;
-    private int ultProjectilesArrived = 0;
-    private int totalUltProjectiles = 10;
+    protected Player ultTarget;
+    protected int ultProjectilesArrived = 0;
+    protected int totalUltProjectiles = 10;
 
-    private bool isInvincible = false;
+    protected bool isInvincible = false;
+
+    // === Footstep SFX ===
+    protected AudioStreamPlayer2D walkSFX;
+    protected AudioStream[] footstepClips;
+    protected RandomNumberGenerator rng = new RandomNumberGenerator();
+    protected AudioStreamPlayer2D hitSFX;
+    protected AudioStreamPlayer2D dodgeSFX;
+    protected AudioStreamPlayer2D attackSFX;
+    protected AudioStreamPlayer2D ultSFX;
+    protected AudioStreamPlayer2D jumpSFX;
+
+    protected float footstepCooldown = 0.4f; // 最小间隔（秒）
+    protected float footstepTimer = 0f;
 
     public override void _Ready()
     {
@@ -91,6 +104,23 @@ public partial class Player : Area2D
         hearts = GetNode<Node2D>("Hearts");
         heartsInitialPosition = hearts.Position;
         AddToGroup("player");
+
+        // === Footstep sound setup ===
+        walkSFX = GetNode<AudioStreamPlayer2D>("WalkSFX");
+        rng.Randomize();
+        footstepClips = new AudioStream[]
+        {
+            GD.Load<AudioStream>("res://音效/人物/人物-铅笔-footstep1.wav"),
+            GD.Load<AudioStream>("res://音效/人物/人物-铅笔-footstep2.wav"),
+            GD.Load<AudioStream>("res://音效/人物/人物-铅笔-footstep3.wav"),
+            GD.Load<AudioStream>("res://音效/人物/人物-铅笔-footstep4.wav"),
+        };
+
+        hitSFX = GetNode<AudioStreamPlayer2D>("HitSFX");
+        attackSFX = GetNode<AudioStreamPlayer2D>("AttackSFX");
+        dodgeSFX = GetNode<AudioStreamPlayer2D>("DodgeSFX");
+        ultSFX = GetNode<AudioStreamPlayer2D>("UltSFX");
+        jumpSFX = GetNode<AudioStreamPlayer2D>("JumpSFX");
     }
 
     public void Heal(int amount)
@@ -165,10 +195,26 @@ public partial class Player : Area2D
         {
             anim.Animation = "Walk";
             anim.FlipH = Velocity.X < 0;
+
+            footstepTimer -= deltaF; // 每帧递减
+
+            if (footstepTimer <= 0f && footstepClips.Length > 0)
+            {
+                walkSFX.Stream = footstepClips[rng.RandiRange(0, footstepClips.Length - 1)];
+                walkSFX.Play();
+                footstepTimer = footstepCooldown; // 重置计时器
+            }
         }
         else
         {
             anim.Animation = "Idle";
+
+            if (walkSFX.Playing)
+            {
+                walkSFX.Stop();
+            }
+            
+            footstepTimer = 0f;
         }
 
         anim.Play();
@@ -200,6 +246,7 @@ public partial class Player : Area2D
         {
             Velocity.Y = -JumpForce;
             IsJumping = true;
+            jumpSFX.Play();
         }
     }
 
@@ -247,9 +294,11 @@ public partial class Player : Area2D
 
         attackArea.Monitoring = true;
         attackShape.Disabled = false;
+
+        attackSFX?.Play();
     }
 
-    private void OnAttackHit(Area2D area)
+    protected void OnAttackHit(Area2D area)
     {
         if (area == attackArea) return;
 
@@ -278,6 +327,8 @@ public partial class Player : Area2D
             HealthBar.Value = currentHealth;
         }
 
+        hitSFX?.Play();
+
         if (currentHealth <= 0)
         {
             if (!isDying)
@@ -305,6 +356,8 @@ public partial class Player : Area2D
 
         isDodging = true;
 
+        dodgeSFX.Play();
+
         float dodgeDistance = 100f;
         float direction = GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH ? 1f : -1f;
         Position += new Vector2(dodgeDistance * direction, 0);
@@ -330,7 +383,7 @@ public partial class Player : Area2D
             EnergyBar.Value = energy;
     }
 
-    private void OnAnimationFinished()
+    protected void OnAnimationFinished()
     {
         var anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
@@ -357,6 +410,7 @@ public partial class Player : Area2D
             IsAnyUlting = false;
             GD.Print($"{Name} Ulting 播放完毕，生成弹幕！");
             SpawnUltProjectiles();
+            ultSFX.Play();
         }
 
         if (isDying && anim.Animation == "Dead")
@@ -396,7 +450,7 @@ public partial class Player : Area2D
         }
     }
 
-    private void SpawnUltProjectiles()
+    protected void SpawnUltProjectiles()
     {
         var scene = GD.Load<PackedScene>("res://Scenes/GameObject/PencilHead.tscn");
         var root = GetTree().CurrentScene;
@@ -444,7 +498,7 @@ public partial class Player : Area2D
         }
     }
 
-    private void GainEnergy(int amount)
+    protected void GainEnergy(int amount)
     {
         if (energy >= MaxEnergy) return;
 
@@ -455,7 +509,7 @@ public partial class Player : Area2D
             EnergyBar.Value = energy;
     }
     
-    private void UpdateHearts()
+    protected void UpdateHearts()
     {
         heart1.Visible = Lives >= 1;
         heart2.Visible = Lives >= 2;
