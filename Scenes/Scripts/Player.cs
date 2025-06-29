@@ -19,7 +19,7 @@ public partial class Player : Area2D
     [Export] public float MaxX = 1800f;
 
 
-    public int currentHealth;
+    private int currentHealth;
 
     public Vector2 Velocity = Vector2.Zero;
     public bool IsJumping = false;
@@ -83,8 +83,20 @@ public partial class Player : Area2D
 
         hearts = GetNode<Node2D>("Hearts");
         heartsInitialPosition = hearts.Position;
+        AddToGroup("player");
     }
 
+    public void Heal(int amount)
+    {
+        // 确保不会超过最大生命值
+        currentHealth = Mathf.Min(currentHealth + amount, MaxHealth);
+        GD.Print($"{Name} 恢复 {amount} 点生命值! 当前生命: {currentHealth}");
+    
+        if (HealthBar != null)
+        {
+            HealthBar.Value = currentHealth;
+        }
+    }
     public override void _Process(double delta)
     {
         UpdateAttackAreaPosition();
@@ -395,7 +407,7 @@ public partial class Player : Area2D
         if (EnergyBar != null)
             EnergyBar.Value = energy;
     }
-
+    
     private void UpdateHearts()
     {
         heart1.Visible = Lives >= 1;
@@ -403,18 +415,5 @@ public partial class Player : Area2D
         heart3.Visible = Lives >= 3;
     }
 
-    public void SetHealthBar(TextureProgressBar bar)
-    {
-        HealthBar = bar;
-        if (HealthBar != null)
-            HealthBar.Value = currentHealth;
-    }
-
-    public void SetEnergyBar(TextureProgressBar bar)
-    {
-        EnergyBar = bar;
-        if (EnergyBar != null)
-            EnergyBar.Value = energy;
-    }
 
 }
