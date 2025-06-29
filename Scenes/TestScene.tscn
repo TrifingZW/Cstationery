@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdxhlkopec1sx"]
+[gd_scene load_steps=10 format=3 uid="uid://bdxhlkopec1sx"]
 
 [ext_resource type="PackedScene" uid="uid://w21kp5u8ddoa" path="res://Scenes/GameObject/Player.tscn" id="1_b5ayd"]
 [ext_resource type="Texture2D" uid="uid://d4l28ulu1g30" path="res://Art/testZiYuan/eab1672be246760c14bf964580c61235.png" id="2_5lt6y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://br5n1akmeojyp" path="res://Art/UI/Base-01.png" id="3_8k7wh"]
 [ext_resource type="Texture2D" uid="uid://cxp5vsc5cqcxx" path="res://Art/UI/UI.png" id="3_iufkg"]
 [ext_resource type="Texture2D" uid="uid://dyy71g47nbx8q" path="res://Art/UI/PENCIL.png" id="5_0f5h7"]
+[ext_resource type="PackedScene" uid="uid://cd5r40cofm8wf" path="res://daoju/xuebao/health_pickup.tscn" id="6_qsjrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0f5h7"]
 atlas = ExtResource("3_8k7wh")
@@ -113,6 +114,9 @@ rotation = -6.28318
 scale = Vector2(0.675583, 0.586371)
 texture = ExtResource("5_0f5h7")
 flip_h = true
+
+[node name="Area2D" parent="." instance=ExtResource("6_qsjrb")]
+position = Vector2(878, 805)
 
 [editable path="PlayerB"]
 [editable path="Eraser"]

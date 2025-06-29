@@ -28,10 +28,10 @@ thickness = 6
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_q3kb3"]
 
 [node name="Mainmenu" type="Node2D"]
+visible = false
 script = ExtResource("1_mxk1q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 offset_left = 786.0
 offset_top = 159.0
 offset_right = 1306.0
@@ -343,10 +343,10 @@ texture = ExtResource("5_sbwks")
 [node name="Label3" type="Label" parent="Panel3"]
 z_index = 1
 layout_mode = 0
-offset_left = -38.0
-offset_top = -355.0
-offset_right = 312.0
-offset_bottom = -268.0
+offset_left = -118.0
+offset_top = -376.0
+offset_right = 232.0
+offset_bottom = -289.0
 scale = Vector2(1.05765, 1.18067)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_q3kb3")
