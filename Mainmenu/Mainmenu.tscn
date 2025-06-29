@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4avs4ul5y0e0"]
+[gd_scene load_steps=16 format=3 uid="uid://b4avs4ul5y0e0"]
 
 [ext_resource type="Script" uid="uid://yu1to6rg56aw" path="res://Mainmenu/mainmenu.gd" id="1_mxk1q"]
 [ext_resource type="FontFile" uid="uid://dqcl1dgsjgfx" path="res://Art/testZiYuan/Font resources/AiDianMengWaTi-2.ttf" id="2_q3kb3"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bpw5su6dd3oi" path="res://Art/testZiYuan/未标题-1.png" id="5_sbwks"]
 [ext_resource type="Script" uid="uid://cmcdnl5vkncmq" path="res://Mainmenu/check_button.gd" id="6_aabpv"]
 [ext_resource type="Texture2D" uid="uid://dsk2d5pi7byv5" path="res://Select the Character screen/123.png" id="7_4v483"]
+[ext_resource type="Texture2D" uid="uid://dogs2wac5gj67" path="res://Art/beginamni/开场11.png" id="8_f8yh1"]
+[ext_resource type="Texture2D" uid="uid://bfe1b2glx45wx" path="res://Art/beginamni/开场22.png" id="9_2b3gy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxk1q"]
 bg_color = Color(0.63181, 0.594645, 0.547308, 0)
@@ -28,10 +30,10 @@ thickness = 6
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_q3kb3"]
 
 [node name="Mainmenu" type="Node2D"]
-visible = false
 script = ExtResource("1_mxk1q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 offset_left = 786.0
 offset_top = 159.0
 offset_right = 1306.0
@@ -327,6 +329,7 @@ text = "返回主菜单"
 icon_alignment = 1
 
 [node name="Panel3" type="Panel" parent="."]
+visible = false
 offset_left = 958.0
 offset_top = 538.0
 offset_right = 998.0
@@ -482,6 +485,86 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
 text = "返回主菜单"
 icon_alignment = 1
 
+[node name="Panel4" type="Panel" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_f8yh1")
+
+[node name="back2" type="Button" parent="Panel4"]
+z_index = 1
+layout_mode = 2
+offset_left = 1579.0
+offset_top = 900.0
+offset_right = 1779.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
+text = "下一步
+"
+icon_alignment = 1
+
+[node name="Panel5" type="Panel" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="Panel5"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("9_2b3gy")
+
+[node name="back3" type="Button" parent="Panel5"]
+z_index = 1
+layout_mode = 2
+offset_left = 1579.0
+offset_top = 900.0
+offset_right = 1779.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q3kb3")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
+text = "下一步
+"
+icon_alignment = 1
+
 [connection signal="button_down" from="VBoxContainer/Play" to="." method="_on_play_button_down"]
 [connection signal="pressed" from="VBoxContainer/Play2" to="." method="_on_play2_pressed"]
 [connection signal="button_down" from="VBoxContainer/setting" to="." method="_on_setting_button_down"]
@@ -493,3 +576,5 @@ icon_alignment = 1
 [connection signal="pressed" from="Panel2/back3" to="." method="_on_onepeople_pressed"]
 [connection signal="pressed" from="Panel2/back4" to="." method="_on_back1_pressed"]
 [connection signal="pressed" from="Panel3/back5" to="." method="_on_back_5_pressed"]
+[connection signal="pressed" from="Panel4/back2" to="." method="_on_back_2_pressed"]
+[connection signal="pressed" from="Panel5/back3" to="." method="_on_back_3_pressed"]
