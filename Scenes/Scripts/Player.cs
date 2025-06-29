@@ -48,13 +48,19 @@ public partial class Player : Area2D
     protected bool isDodging = false;
     protected bool isUlting = false;
     protected bool isHit = false;
-    protected bool isDying = false;
+    public bool isDying = false;
+    public bool isDead = false;
 
     private Player ultTarget;
     private int ultProjectilesArrived = 0;
     private int totalUltProjectiles = 10;
+
+    private bool isInvincible = false;
+
     public override void _Ready()
     {
+        AddToGroup("player");
+
         bodyArea = GetNode<Area2D>("CollisionBody");
         bodyShape = bodyArea.GetNode<CollisionShape2D>("CollisionShape2D");
         attackArea = GetNode<Area2D>("AttackArea");
@@ -149,6 +155,11 @@ public partial class Player : Area2D
         else if (isDying)
         {
             anim.Animation = "AbilityAttack";
+        }
+        else if (isDead)
+        {
+            anim.Animation = "Die";
+            anim.Stop();
         }
         else if (Mathf.Abs(Velocity.X) > 0.1f)
         {
@@ -255,7 +266,7 @@ public partial class Player : Area2D
 
     public virtual void TakeDamage(int amount)
     {
-        if (isDodging || isHit) return;
+        if (isDodging || isHit || isInvincible) return;
 
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0);
@@ -350,8 +361,6 @@ public partial class Player : Area2D
 
         if (isDying && anim.Animation == "Dead")
         {
-            isDying = false;
-
             Lives--;
             if (Lives > 0)
             {
@@ -359,14 +368,30 @@ public partial class Player : Area2D
                 currentHealth = MaxHealth;
                 HealthBar.Value = currentHealth;
                 UpdateHearts();
+
+                isDying = false;
+
+                isInvincible = true;
+                Modulate = new Color(1, 1, 1, 0.5f); // 半透明闪烁
+
+                var timer = GetTree().CreateTimer(1f);
+                timer.Timeout += () =>
+                {
+                    isInvincible = false;
+                    Modulate = new Color(1, 1, 1, 1f); // 恢复可见
+                    GD.Print($"{Name} 无敌状态结束");
+                };
             }
             else
             {
+                isDead = true;
+                UpdateHearts();
                 GD.Print($"{Name} 游戏结束！");
                 controller.SetInputEnabled(false);
+
                 //通知game manager死啦
-                //GetTree().CallGroup("GameManager", "OnPlayerDeath", this);
-                return;
+                var gameManager = GetNode<GameManager>("/root/GameManager");
+                gameManager.OnPlayerDeath(this);
             }
         }
     }

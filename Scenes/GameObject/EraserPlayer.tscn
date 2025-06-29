@@ -89,6 +89,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"Dead",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jnxb3")
+}],
+"loop": false,
+"name": &"Die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -188,7 +196,7 @@ frame_progress = 0.874997
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_m0x7a")
-animation = &"Attack"
+animation = &"Die"
 metadata/_edit_group_ = true
 
 [node name="CollisionBody" type="Area2D" parent="."]

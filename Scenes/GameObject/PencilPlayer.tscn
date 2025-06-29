@@ -89,6 +89,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"Dead",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_qhlmp")
+}],
+"loop": true,
+"name": &"Die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -178,9 +186,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_m0x7a")
-animation = &"Dead"
-frame = 1
-frame_progress = 1.0
+animation = &"Die"
 metadata/_edit_group_ = true
 
 [node name="CollisionBody" type="Area2D" parent="."]
