@@ -15,4 +15,9 @@ public partial class End : Node2D
         PlayerB_Win.Visible = !isPlayerAWinner;
         PlayerB_Loss.Visible = isPlayerAWinner;
     }
+
+    public void Resume()
+    {
+        GetTree().ChangeSceneToFile("res://Mainmenu/Mainmenu.tscn");
+    }
 }

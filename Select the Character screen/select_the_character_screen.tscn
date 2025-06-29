@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxdyuprj68j3u"]
+[gd_scene load_steps=9 format=3 uid="uid://bxdyuprj68j3u"]
 
 [ext_resource type="Texture2D" uid="uid://v00n635hxqaj" path="res://Art/UI/ERASER.png" id="1_8s6a8"]
+[ext_resource type="Script" uid="uid://ciuia6txgsgj7" path="res://Select the Character screen/SelectTheCharacterScreen.cs" id="1_iol6q"]
 [ext_resource type="Texture2D" uid="uid://cqt2cvsyh5kaw" path="res://Art/testZiYuan/22222.png" id="2_e3ebu"]
 [ext_resource type="Texture2D" uid="uid://dyy71g47nbx8q" path="res://Art/UI/PENCIL.png" id="2_iol6q"]
 [ext_resource type="Texture2D" uid="uid://dcqnwsftxt4cj" path="res://Art/testZiYuan/手2.png" id="3_rdxmy"]
 [ext_resource type="Script" uid="uid://q1l8vuyqut6d" path="res://Select the Character screen/手2.gd" id="4_jcoyh"]
+[ext_resource type="AudioStream" uid="uid://bi6ogmkimh2xx" path="res://音效/UI/交互-选人-选中.wav" id="7_fptl1"]
+[ext_resource type="AudioStream" uid="uid://cb52jtfkhvxl2" path="res://音效/背景/bj- 开场.wav" id="8_8ac4r"]
 
 [node name="One_Select the Character screen" type="Node2D"]
+script = ExtResource("1_iol6q")
 
 [node name="Button" type="Button" parent="."]
 z_index = 1
@@ -45,3 +49,13 @@ position = Vector2(1003, 814)
 scale = Vector2(0.973958, 1)
 texture = ExtResource("3_rdxmy")
 script = ExtResource("4_jcoyh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fptl1")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_8ac4r")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="SelectsE"]
+[connection signal="pressed" from="Button2" to="." method="SelectsP"]

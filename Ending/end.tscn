@@ -67,3 +67,5 @@ offset_bottom = 950.0
 theme_override_fonts/font = ExtResource("4_kwsmj")
 theme_override_font_sizes/font_size = 90
 text = "重新开始"
+
+[connection signal="pressed" from="Button" to="." method="Resume"]

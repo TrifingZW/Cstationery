@@ -1,4 +1,3 @@
-use crate::cstationery_character::CstationeryCharacter;
 use godot::classes::Camera2D;
 use godot::prelude::*;
 
@@ -8,7 +7,7 @@ struct MainScene {
     base: Base<Node2D>,
 
     #[export]
-    characters: Array<Gd<CstationeryCharacter>>,
+    characters: Array<Gd<Node2D>>,
 
     #[export]
     camera2d: Option<Gd<Camera2D>>,
@@ -67,7 +66,7 @@ impl MainScene {
         let mut max_y = f32::MIN;
 
         for character in self.characters.iter_shared() {
-            let position = character.bind().base().get_global_position();
+            let position = character.get_global_position();
             min_x = min_x.min(position.x);
             min_y = min_y.min(position.y);
             max_x = max_x.max(position.x);

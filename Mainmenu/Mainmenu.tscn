@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4avs4ul5y0e0"]
+[gd_scene load_steps=18 format=3 uid="uid://b4avs4ul5y0e0"]
 
 [ext_resource type="Script" uid="uid://yu1to6rg56aw" path="res://Mainmenu/mainmenu.gd" id="1_mxk1q"]
 [ext_resource type="FontFile" uid="uid://dqcl1dgsjgfx" path="res://Art/testZiYuan/Font resources/AiDianMengWaTi-2.ttf" id="2_q3kb3"]
 [ext_resource type="Script" uid="uid://c8f4ib4233qc" path="res://Mainmenu/aidop_con_trol.gd" id="3_prwaj"]
-[ext_resource type="AudioStream" uid="uid://cpmhhlx8rjl3o" path="res://Art/testZiYuan/749338844.mp3" id="3_q3kb3"]
+[ext_resource type="AudioStream" uid="uid://dxdeuy0hpor0r" path="res://音效/UI/交互-点击1.wav" id="4_2b3gy"]
+[ext_resource type="AudioStream" uid="uid://cs4bahm5mi7w0" path="res://音效/UI/交互-翻页.wav" id="5_qr2ty"]
 [ext_resource type="Texture2D" uid="uid://bpw5su6dd3oi" path="res://Art/testZiYuan/未标题-1.png" id="5_sbwks"]
 [ext_resource type="Script" uid="uid://cmcdnl5vkncmq" path="res://Mainmenu/check_button.gd" id="6_aabpv"]
 [ext_resource type="Texture2D" uid="uid://dsk2d5pi7byv5" path="res://Select the Character screen/123.png" id="7_4v483"]
 [ext_resource type="Texture2D" uid="uid://dogs2wac5gj67" path="res://Art/beginamni/开场11.png" id="8_f8yh1"]
 [ext_resource type="Texture2D" uid="uid://bfe1b2glx45wx" path="res://Art/beginamni/开场22.png" id="9_2b3gy"]
+[ext_resource type="AudioStream" uid="uid://cb52jtfkhvxl2" path="res://音效/背景/bj- 开场.wav" id="10_2b3gy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxk1q"]
 bg_color = Color(0.63181, 0.594645, 0.547308, 0)
@@ -154,8 +156,12 @@ scale = Vector2(0.999739, 1.0037)
 texture = ExtResource("5_sbwks")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_q3kb3")
+stream = ExtResource("4_2b3gy")
 volume_db = -22.486
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qr2ty")
+volume_db = 9.946
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -486,7 +492,6 @@ text = "返回主菜单"
 icon_alignment = 1
 
 [node name="Panel4" type="Panel" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -564,6 +569,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mxk1q")
 text = "下一步
 "
 icon_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(9, 3)
+stream = ExtResource("10_2b3gy")
+autoplay = true
 
 [connection signal="button_down" from="VBoxContainer/Play" to="." method="_on_play_button_down"]
 [connection signal="pressed" from="VBoxContainer/Play2" to="." method="_on_play2_pressed"]
