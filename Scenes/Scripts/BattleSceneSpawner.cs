@@ -12,20 +12,17 @@ public partial class BattleSceneSpawner : Node
 
     public override void _Ready()
     {
-        var canvas = GetNode("CanvasLayer");
+        var healthBarA = GetNode<TextureProgressBar>("healthyA");
+        var energyBarA = GetNode<TextureProgressBar>("energyA");
+        var healthBarB = GetNode<TextureProgressBar>("healthyB");
+        var energyBarB = GetNode<TextureProgressBar>("energyB");
 
-        var healthBarA = canvas.GetNode<TextureProgressBar>("healthyA");
-        var energyBarA = canvas.GetNode<TextureProgressBar>("energyA");
-        var healthBarB = canvas.GetNode<TextureProgressBar>("healthyB");
-        var energyBarB = canvas.GetNode<TextureProgressBar>("energyB");
-
-        var playerA_PencilPfP = canvas.GetNode<Sprite2D>("PlayerA_PencilPfP");
-        var playerA_EraserPfP = canvas.GetNode<Sprite2D>("PlayerA_EraserPfP");
-        var playerB_PencilPfP = canvas.GetNode<Sprite2D>("PlayerB_PencilPfP");
-        var playerB_EraserPfP = canvas.GetNode<Sprite2D>("PlayerB_EraserPfP");
+        var playerA_PencilPfP = GetNode<TextureRect>("PlayerA_PencilPfP");
+        var playerA_EraserPfP = GetNode<TextureRect>("PlayerA_EraserPfP");
+        var playerB_PencilPfP = GetNode<TextureRect>("PlayerB_PencilPfP");
+        var playerB_EraserPfP = GetNode<TextureRect>("PlayerB_EraserPfP");
 
         var global = GetNode<GameManager>("/root/GameManager");
-
         Vector2 spawnA = new Vector2(430, 750);
         Vector2 spawnB = new Vector2(1440, 750);
 
@@ -56,6 +53,8 @@ public partial class BattleSceneSpawner : Node
 
     private Node2D SpawnPlayer(CharacterType choice, Vector2 position, string inputPrefix)
     {
+        GD.Print($"SpawnPlayer 被调用，角色是 {choice}，坐标是 {position}");
+
         PackedScene? scene = choice switch
         {
             CharacterType.Pencil => GD.Load<PackedScene>("res://Scenes/GameObject/PencilPlayer.tscn"),
@@ -63,11 +62,15 @@ public partial class BattleSceneSpawner : Node
             _ => null
         };
 
-        if (scene == null) return null;
+        if (scene == null)
+        {
+            GD.PrintErr("PackedScene 加载失败！");
+            return null;
+        }
 
         var player = scene.Instantiate<Node2D>();
         player.Position = position;
-        GetParent().AddChild(player);
+        GetTree().CurrentScene.AddChild(player);
 
         if (player.HasNode("FighterController"))
         {
@@ -77,6 +80,8 @@ public partial class BattleSceneSpawner : Node
                 inputCtrl.InputPrefix = inputPrefix;
             }
         }
+
+        GD.Print($"生成 {choice} 于 {position}");
 
         return player;
     }

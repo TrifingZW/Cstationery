@@ -163,6 +163,21 @@ public partial class Player : Area2D
         anim.Play();
     }
 
+    public void SetHealthBar(TextureProgressBar bar)
+    {
+        HealthBar = bar;
+        if (HealthBar != null)
+            HealthBar.Value = currentHealth;
+    }
+
+    public void SetEnergyBar(TextureProgressBar bar)
+    {
+        EnergyBar = bar;
+        if (EnergyBar != null)
+            EnergyBar.Value = energy;
+    }
+
+
     public void Move(Vector2 input)
     {
         Velocity.X = input.X * Speed;
